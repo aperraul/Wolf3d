@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pre_w3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 15:41:27 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:58:55 by aperraul         ###   ########.fr       */
+/*   Created: 2016/04/06 11:56:48 by aperraul          #+#    #+#             */
+/*   Updated: 2016/04/06 13:43:57 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/Header.h"
 
-int		main(int argc, char **argv)
+void	ft_pre_w3d(t_w3d *w3d)
 {
-	int			ret;
-	t_w3d		*w3d;
-
-	if (argc == 2)
-	{
-		w3d = NULL;
-		if ((ret = open(argv[1], O_RDONLY)) == -1)
-		{
-			ft_putstr("error file");
-			return(0);
-		}
-		w3d = ft_w3d_init();
-		ft_get_map(w3d, ret);
-		if (w3d->map == NULL)
-		{
-			ft_putstr("bad file");
-				return (0);
-		}
-		ft_pre_w3d(w3d);
-	}
-	else
-		ft_putstr("nb maps != 1");
-	return (0);
+	w3d->mlx = ft_mlx_init(w3d->mlx, WIN_X, WIN_Y, "wolf3d");
+	ft_wolf3d(w3d);
+	mlx_loop_hook(w3d->mlx->p_mlx, ft_wolf3d_loop, w3d);
+	mlx_loop(w3d->mlx->p_mlx);
 }

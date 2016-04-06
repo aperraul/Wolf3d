@@ -6,19 +6,21 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/04/05 15:31:32 by aperraul         ###   ########.fr        #
+#    Updated: 2016/04/06 11:16:43 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 SRC = ./sources/main.c \
+	  ./sources/ft_check_line.c \
 	  ./sources/get_map.c \
 	  ./sources/ft_w3d_init.c \
 	  ./gnl/get_next_line.c \
 
 OBJS = ./main.o \
-	   get_map.o \
+	   ./ft_check_line.o \
+	   ./get_map.o \
 	   ./ft_w3d_init.o \
 	   ./get_next_line.o \
 

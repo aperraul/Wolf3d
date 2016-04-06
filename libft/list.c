@@ -6,11 +6,30 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:11:03 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/05 16:09:35 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/06 11:42:26 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstline_del(t_lstline *alst)
+{
+	t_lstline	*temp1;
+	t_lstline	*temp2;
+
+	if (alst)
+	{
+		temp1 = alst;
+		while (temp1->next)
+		{
+			temp2 = temp1->next;
+			ft_memdel((void **)&temp1);
+			temp1 = temp2;
+		}
+		ft_memdel((void **)&temp1);
+		alst = NULL;
+	}
+}
 
 t_lstline	*ft_next_list(void)
 {

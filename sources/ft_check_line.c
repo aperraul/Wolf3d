@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_check_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 15:41:27 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:58:55 by aperraul         ###   ########.fr       */
+/*   Created: 2016/02/04 17:18:01 by aperraul          #+#    #+#             */
+/*   Updated: 2016/04/06 11:10:16 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/Header.h"
 
-int		main(int argc, char **argv)
+int		ft_check_line(char *line)
 {
-	int			ret;
-	t_w3d		*w3d;
+	int		i;
+	int		f;
 
-	if (argc == 2)
+	i = 0;
+	f = 0;
+	while (line[i])
 	{
-		w3d = NULL;
-		if ((ret = open(argv[1], O_RDONLY)) == -1)
+		if ((line[i] >= '0' && line[i] <= '9') || line[i] == ' ' ||
+				line[i] == '-')
 		{
-			ft_putstr("error file");
-			return(0);
-		}
-		w3d = ft_w3d_init();
-		ft_get_map(w3d, ret);
-		if (w3d->map == NULL)
-		{
-			ft_putstr("bad file");
+			if (line[i] == '-' && (line[i + 1] == '-' || line[i + 1] == ' '))
 				return (0);
+			if (line[i] >= '0' && line[i] <= '9')
+				f++;
+			i++;
 		}
-		ft_pre_w3d(w3d);
+		else
+			return (0);
 	}
-	else
-		ft_putstr("nb maps != 1");
-	return (0);
+	if (f == 0)
+		return (0);
+	return (i);
 }

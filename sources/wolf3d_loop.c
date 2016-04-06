@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   wolf3d_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/04 15:41:27 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:58:55 by aperraul         ###   ########.fr       */
+/*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
+/*   Updated: 2016/04/06 14:26:10 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/Header.h"
 
-int		main(int argc, char **argv)
+int		ft_wolf3d_loop(t_w3d *w3d)
 {
-	int			ret;
-	t_w3d		*w3d;
+	double	elapsedtime;
 
-	if (argc == 2)
-	{
-		w3d = NULL;
-		if ((ret = open(argv[1], O_RDONLY)) == -1)
-		{
-			ft_putstr("error file");
-			return(0);
-		}
-		w3d = ft_w3d_init();
-		ft_get_map(w3d, ret);
-		if (w3d->map == NULL)
-		{
-			ft_putstr("bad file");
-				return (0);
-		}
-		ft_pre_w3d(w3d);
-	}
-	else
-		ft_putstr("nb maps != 1");
-	return (0);
+	gettimeofday(&w3d->delt.t1, NULL);
+	ft_wolf3d(w3d);
+	gettimeofday(&w3d->delt.t2, NULL);
+	elapsedtime = (w3d->delt.t2.tv_sec - w3d->delt.t1.tv_sec) * 1000.0;
+	elapsedtime += (w3d->delt.t2.tv_usec - w3d->delt.t1.tv_usec) / 1000.0;
+	w3d->delt.dt = elapsedtime / 1000;
 }
