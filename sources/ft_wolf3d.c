@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 12:02:04 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 15:57:34 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 12:00:01 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ void			ft_wolf3d(t_w3d *w3d)
 	int		x;
 
 	x = -1;
+	ft_wolf_events(w3d);
 	while (++x < WIN_X)
 	{
+		w3d->wall.wall_x = x;
 		w3d->ray.cam_x = x * 2 / (double)WIN_X - 1;
 		w3d->ray.raypos_x = w3d->cam.pos_x;
 		w3d->ray.raypos_y = w3d->cam.pos_y;
@@ -83,5 +85,9 @@ void			ft_wolf3d(t_w3d *w3d)
 		w3d->ray.map_x = (int)w3d->ray.raypos_x;
 		w3d->ray.map_y = (int)w3d->ray.raypos_y;
 		ft_calc_ray_dist(w3d);
+		ft_draw_wolf3d(w3d);
 	}
+	w3d->cam.keym = 0;
+	w3d->cam.keyr = 0;
+	ft_flush_img(w3d->mlx);
 }

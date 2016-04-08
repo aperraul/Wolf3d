@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 15:11:01 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 11:51:50 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ t_w3d	*ft_w3d_init(void)
 	w3d->map = NULL;
 	w3d->mlx = NULL;
 	w3d->nb_lines = 0;
-	w3d->cam.pos_x = 5;
+	w3d->cam.pos_x = 15;
 	w3d->cam.pos_y = 5;
 	w3d->cam.dir_x = -1;
 	w3d->cam.dir_y = 0;
 	w3d->cam.plan_x = 0;
 	w3d->cam.plan_y = 0.66;
+	w3d->delt.dt = 0;
+	w3d->cam.keym = 0;
+	w3d->cam.keyr = 0;
 	return (w3d);
 }
