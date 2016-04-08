@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:22:00 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:43:06 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 15:01:14 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef	struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef	struct	s_ptd
+{
+	double		x;
+	double		y;
+}				t_ptd;
 
 typedef	struct	s_pt
 {

@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/07 12:54:55 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 15:04:48 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,12 @@ typedef struct	s_wall
 typedef struct	s_ray
 {
 	double		cam_x;
-	double		raypos_x;
-	double		raypos_y;
-	double		raydir_x;
-	double		raydir_y;
-	int			map_x;
-	int			map_y;
-	double		sdist_x;
-	double		sdist_y;
-	double		ddist_x;
-	double		ddist_y;
-	double		step_x;
-	double		step_y;
+	t_ptd		raypos;
+	t_ptd		raydir;
+	t_pt		map;
+	t_ptd		sdist;
+	t_ptd		ddist;
+	t_ptd		step;
 	int			hit;
 	int			side;
 
@@ -55,12 +49,9 @@ typedef struct	s_ray
 
 typedef struct	s_cam
 {
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plan_x;
-	double		plan_y;
+	t_ptd		pos;
+	t_ptd		dir;
+	t_ptd		plan;
 	double		mspeed;
 	double		rspeed;
 	int			keym;

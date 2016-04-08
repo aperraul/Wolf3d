@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 12:43:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 11:45:18 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 14:55:37 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ static void		ft_move(char *str, t_w3d *w3d)
 		if (w3d->map[(int)(w3d->cam.pos_x + w3d->cam.dir_x * w3d->cam.mspeed)][(int)(w3d->cam.pos_y)] == 0)
 			w3d->cam.pos_x += w3d->cam.dir_x * w3d->cam.mspeed;
 		if (w3d->map[(int)(w3d->cam.pos_x)][(int)(w3d->cam.pos_y + w3d->cam.dir_y * w3d->cam.mspeed)] == 0)
-			w3d->cam.pos_y += w3d->cam.pos_y * w3d->cam.mspeed;
+			w3d->cam.pos_y += w3d->cam.dir_y * w3d->cam.mspeed;
 	}
 	if (!ft_strcmp(str, "backward"))
 	{
 		if (w3d->map[(int)(w3d->cam.pos_x - w3d->cam.dir_x * w3d->cam.mspeed)][(int)(w3d->cam.pos_y)] == 0)
 			w3d->cam.pos_x -= w3d->cam.dir_x * w3d->cam.mspeed;
 		if (w3d->map[(int)(w3d->cam.pos_x)][(int)(w3d->cam.pos_y - w3d->cam.dir_y * w3d->cam.mspeed)] == 0)
-			w3d->cam.pos_y -= w3d->cam.pos_y * w3d->cam.mspeed;
+			w3d->cam.pos_y -= w3d->cam.dir_y * w3d->cam.mspeed;
 	}
 }
 
@@ -67,7 +67,7 @@ void			ft_wolf_events(t_w3d *w3d)
 		if (w3d->cam.keym == 1)
 			ft_move("forward", w3d);
 		else
-			ft_move("backword", w3d);
+			ft_move("backward", w3d);
 	}
 	if (w3d->cam.keyr == 1 || w3d->cam.keyr == -1)
 	{

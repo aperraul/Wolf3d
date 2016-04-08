@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 12:12:24 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 13:01:27 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ static void		ft_draw_ver_line(t_w3d *w3d)
 
 static void		ft_choose_color(t_w3d *w3d)
 {
-	if (w3d->map[w3d->ray.map_y][w3d->ray.map_x] == 1)
+	if (w3d->map[w3d->ray.map_x][w3d->ray.map_y] == 1)
 	{
-		w3d->wall.color = 0xFFFFF;
-		if (w3d->ray.side == 1)
-			w3d->wall.color /= 2;
+		w3d->wall.color = 0xFFFFFF;
+//		if (w3d->ray.side == 1)
+//			w3d->wall.color /= 2;
 	}
-	else if (w3d->map[w3d->ray.map_y][w3d->ray.map_x] == 2)
+	else if (w3d->map[w3d->ray.map_x][w3d->ray.map_y] == 2)
 	{
 		w3d->wall.color = 0x2A7EF5;
-		if (w3d->ray.side == 1)
-			w3d->wall.color /= 2;
+//		if (w3d->ray.side == 1)
+//			w3d->wall.color /= 2;
 	}
-	else if (w3d->map[w3d->ray.map_y][w3d->ray.map_x] == 3)
+	else if (w3d->map[w3d->ray.map_x][w3d->ray.map_y] == 3)
 	{
 		w3d->wall.color = 0x16BA42;
-		if (w3d->ray.side == 1)
-			w3d->wall.color /= 2;
+//		if (w3d->ray.side == 1)
+//			w3d->wall.color /= 2;
 	}
-	else if (w3d->map[w3d->ray.map_y][w3d->ray.map_x] == 4)
+	else if (w3d->map[w3d->ray.map_x][w3d->ray.map_y] == 4)
 	{
 		w3d->wall.color = 0xF52A2A;
-		if (w3d->ray.side == 1)
-			w3d->wall.color /= 2;
+//		if (w3d->ray.side == 1)
+//			w3d->wall.color /= 2;
 	}
 }
 
