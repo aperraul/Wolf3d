@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 15:04:48 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/08 17:25:33 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ typedef struct	s_wall
 {
 	int			wall_x;
 	double		pwd;
-	int			hightline;
-	int			drawstart;
-	int			drawend;
+	int			hline;
+	int			dstart;
+	int			dend;
 	int			color;
 }				t_wall;
 
 typedef struct	s_ray
 {
 	double		cam_x;
-	t_ptd		raypos;
-	t_ptd		raydir;
+	t_ptd		rpos;
+	t_ptd		rdir;
 	t_pt		map;
 	t_ptd		sdist;
 	t_ptd		ddist;
@@ -83,7 +83,7 @@ void		ft_get_map(t_w3d *w3d, int ret);
 int			ft_check_line(char *line);
 void		ft_pre_w3d(t_w3d *w3d);
 void		ft_wolf3d(t_w3d *w3d);
-void		ft_draw_wolf3d(t_w3d *w3d);
+void		ft_draw_wolf3d(t_w3d *w3d, t_wall *w, t_ray *r);
 int			ft_wolf_move(int keycode, t_w3d *w3d);
 int			ft_wolf3d_loop(t_w3d *w3d);
 void		ft_wolf_events(t_w3d *w3d);
