@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 17:25:33 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/09 11:41:24 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../libmlx/X.h"
 # include <sys/time.h>
 
-# define WIN_X 2000
-# define WIN_Y 2000
+# define WIN_X 1200
+# define WIN_Y 900
 
 typedef struct	s_wall
 {

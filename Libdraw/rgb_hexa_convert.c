@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 11:36:07 by aperraul          #+#    #+#             */
-/*   Updated: 2016/03/23 12:16:55 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/09 11:40:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_rgb	ft_hexa_to_rgb(int hexa)
 {
 	t_rgb	rgb;
 
-	rgb.r = ((hexa >> 16) & 0xFF) / 255;
-	rgb.g = ((hexa >> 8) & 0xFF) / 255;
-	rgb.b = (hexa & 0xFF) / 255;
+	rgb.r = (hexa / (256 * 256)) % 256;
+	rgb.g = (hexa / 256) % 256;
+	rgb.b = hexa % 256;
 	return (rgb);
 }
 
-int		ft_rgb_to_rgb(t_rgb rgb)
+int		ft_rgb_to_hexa(t_rgb rgb)
 {
 	int		hexa;
 
