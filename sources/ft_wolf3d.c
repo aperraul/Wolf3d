@@ -6,32 +6,32 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 12:02:04 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 17:25:35 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/13 14:43:02 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/Header.h"
 
-static void		ft_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m, t_ptd *s)
+static void		ft_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 {
 	while (w3d->map[m->x][m->y] == 0)
 	{
 		if (sd->x < sd->y)
 		{
 			sd->x += dd->x;
-			m->x += s->x;
+			m->x += w3d->ray.step.x;
 			w3d->ray.side = 0;
 		}
 		else
 		{
 			sd->y += dd->y;
-			m->y += s->y;
+			m->y += w3d->ray.step.y;
 			w3d->ray.side = 1;
 		}
 	}
 }
 
-static void		ft_step(t_w3d *w3d, t_ptd *d, t_ptd *p, t_ptd *sdt, t_pt *m)
+static void		ft_step(t_w3d *w3d, t_ptd *d, t_ptd *p, t_ptd *sdt)
 {
 	double x;
 	double y;
@@ -41,22 +41,22 @@ static void		ft_step(t_w3d *w3d, t_ptd *d, t_ptd *p, t_ptd *sdt, t_pt *m)
 	if (d->x < 0)
 	{
 		w3d->ray.step.x = -1;
-		sdt->x = (p->x - m->x) * x;
+		sdt->x = (p->x - w3d->ray.map.x) * x;
 	}
 	else
 	{
 		w3d->ray.step.x = 1;
-		sdt->x = (m->x + 1.0 - p->x) * x;
+		sdt->x = (w3d->ray.map.x + 1.0 - p->x) * x;
 	}
 	if (d->y < 0)
 	{
 		w3d->ray.step.y = -1;
-		sdt->y = (p->y - m->y) * y;
+		sdt->y = (p->y - w3d->ray.map.y) * y;
 	}
 	else
 	{
 		w3d->ray.step.y = 1;
-		sdt->y = (m->y + 1.0 - p->y) * y;
+		sdt->y = (w3d->ray.map.y + 1.0 - p->y) * y;
 	}
 }
 
@@ -64,8 +64,8 @@ static void		ft_calc_ray_dist(t_w3d *w3d, t_ptd *ddist, t_ptd *raydir)
 {
 	ddist->x = sqrt(1 + (raydir->y * raydir->y) / (raydir->x * raydir->x));
 	ddist->y = sqrt(1 + (raydir->x * raydir->x) / (raydir->y * raydir->y));
-	ft_step(w3d, &w3d->ray.rdir, &w3d->ray.rpos, &w3d->ray.sdist, &w3d->ray.map);
-	ft_dda(w3d, &w3d->ray.sdist, &w3d->ray.ddist, &w3d->ray.map, &w3d->ray.step);
+	ft_step(w3d, &w3d->ray.rdir, &w3d->ray.rpos, &w3d->ray.sdist);
+	ft_dda(w3d, &w3d->ray.sdist, &w3d->ray.ddist, &w3d->ray.map);
 }
 
 void			ft_wolf3d(t_w3d *w3d)
@@ -73,6 +73,7 @@ void			ft_wolf3d(t_w3d *w3d)
 	int		x;
 
 	x = -1;
+	ft_wolf_portal(w3d);
 	ft_wolf_events(w3d);
 	while (++x < WIN_X)
 	{
@@ -87,7 +88,5 @@ void			ft_wolf3d(t_w3d *w3d)
 		ft_calc_ray_dist(w3d, &w3d->ray.ddist, &w3d->ray.rdir);
 		ft_draw_wolf3d(w3d, &w3d->wall, &w3d->ray);
 	}
-	w3d->cam.keym = 0;
-	w3d->cam.keyr = 0;
 	ft_flush_img(w3d->mlx);
 }

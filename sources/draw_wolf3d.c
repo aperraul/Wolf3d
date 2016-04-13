@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/09 12:38:04 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/13 14:54:44 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		ft_draw_linew3d(t_w3d *w3d, int x, int ds, int de)
 {
-		ft_draw_line(ft_make_line(x, ds, x, de), w3d->mlx, w3d->wall.color);
+	ft_draw_line(ft_make_line(x, ds, x, de), w3d->mlx, w3d->wall.color);
 }
 
 static void		ft_choose_color(t_w3d *w3d, t_pt *m)
@@ -35,18 +35,10 @@ static void		ft_choose_color(t_w3d *w3d, t_pt *m)
 		w3d->wall.color = 0x550544;
 	else if (w3d->map[m->x][m->y] == 7)
 		w3d->wall.color = 0xffa500;
-	else if (w3d->map[m->x][m->y] == 8)
-		w3d->wall.color = 0xeb4457;
-	else if (w3d->map[m->x][m->y] == 9)
-		w3d->wall.color = 0x6B3F18;
-	else if (w3d->map[m->x][m->y] == 10)
-		w3d->wall.color = 0x87E0DF;
-	else if (w3d->map[m->x][m->y] == 11)
-		w3d->wall.color = 0x1AE813;
-	else if (w3d->map[m->x][m->y] == 12)
-		w3d->wall.color = 0x123787;
-	else if (w3d->map[m->x][m->y] == 13)
-		w3d->wall.color = 0xF26DB9;
+	else if (w3d->map[m->x][m->y] == 21)
+		w3d->wall.color = 0x33ccff;
+	else if (w3d->map[m->x][m->y] == 22)
+		w3d->wall.color = 0xff8533;
 	if (w3d->ray.side == 1)
 	{
 		rgb = ft_hexa_to_rgb(w3d->wall.color);

@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:45:14 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/13 11:49:19 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		ft_fill_tab(t_lstline *list, int x, t_w3d *w3d)
 	}
 }
 
-void		ft_get_map(t_w3d *w3d, int ret)
+void			ft_get_map(t_w3d *w3d, int ret)
 {
 	char		*line;
 	t_lstline	*list;

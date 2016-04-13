@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 12:13:33 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/13 16:21:49 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,29 @@ int		ft_wolf_move(int keycode, t_w3d *w3d)
 		w3d->cam.keyr = 1;
 	if (keycode == 123)
 		w3d->cam.keyr = -1;
+	if (keycode == 12)
+		w3d->port = 1;
+	if (keycode == 14)
+		w3d->port = -1;
+
+	return (0);
+}
+
+int		ft_release_key(int keycode, t_w3d *w3d)
+{
+	if (keycode == 13 || keycode == 1)
+		w3d->cam.keym = 0;
+	if (keycode == 124 || keycode == 123)
+		w3d->cam.keyr = 0;
+	if (keycode == 12 || keycode == 14)
+		w3d->port =0;
 	return (0);
 }
 
 int		ft_wolf3d_loop(t_w3d *w3d)
 {
 	double	elapsedtime;
-	
+
 	gettimeofday(&w3d->delt.t1, NULL);
 	ft_wolf3d(w3d);
 	ft_reset_img(w3d->mlx, 0);

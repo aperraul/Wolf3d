@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:41:27 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:58:55 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/13 11:46:18 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int		main(int argc, char **argv)
 		if ((ret = open(argv[1], O_RDONLY)) == -1)
 		{
 			ft_putstr("error file");
-			return(0);
+			return (0);
 		}
 		w3d = ft_w3d_init();
 		ft_get_map(w3d, ret);
 		if (w3d->map == NULL)
 		{
 			ft_putstr("bad file");
-				return (0);
+			return (0);
 		}
 		ft_pre_w3d(w3d);
 	}
