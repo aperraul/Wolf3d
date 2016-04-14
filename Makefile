@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/04/13 15:08:10 by aperraul         ###   ########.fr        #
+#    Updated: 2016/04/14 18:44:17 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = ./sources/main.c \
 	  ./sources/wolf3d_hook.c \
 	  ./sources/wolf_events.c \
 	  ./sources/wolf_portal.c \
+	  ./sources/portal_move.c \
 	  ./gnl/get_next_line.c \
 
 OBJS = ./main.o \
@@ -34,6 +35,7 @@ OBJS = ./main.o \
 	   ./wolf3d_hook.o \
 	   ./wolf_events.o \
 	   ./wolf_portal.o \
+	   ./portal_move.o \
 	   ./get_next_line.o \
 
 DRAW = ./Libdraw/draw.a

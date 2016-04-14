@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/14 15:35:16 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/14 18:21:51 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int			ft_wolf_move(int keycode, t_w3d *w3d);
 int			ft_release_key(int keycode, t_w3d *w3d);
 int			ft_wolf3d_loop(t_w3d *w3d);
 void		ft_wolf_events(t_w3d *w3d);
+void		ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r);
 void		ft_wolf_portal(t_w3d *w3d);
 void		ft_portal_b_to_o(t_w3d *w3d);
 void		ft_portal_o_to_b(t_w3d *w3d);
