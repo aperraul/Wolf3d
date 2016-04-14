@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 16:19:51 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/14 15:35:16 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define WIN_X 1200
 # define WIN_Y 900
+# define TEX_X 64
+# define TEX_Y 64
 
 typedef struct	s_wall
 {
@@ -71,10 +73,14 @@ typedef struct	s_portal
 	int			type;
 	int			nbb;
 	int			nbo;
+	t_pt		posb;
+	t_pt		poso;
 	t_pt		locb;
 	t_pt		loco;
 	int			ovb;
 	int			ovo;
+	int			orib;
+	int			orio;
 }				t_portal;
 
 typedef struct	s_w3d
@@ -102,5 +108,7 @@ int			ft_release_key(int keycode, t_w3d *w3d);
 int			ft_wolf3d_loop(t_w3d *w3d);
 void		ft_wolf_events(t_w3d *w3d);
 void		ft_wolf_portal(t_w3d *w3d);
+void		ft_portal_b_to_o(t_w3d *w3d);
+void		ft_portal_o_to_b(t_w3d *w3d);
 
 #endif

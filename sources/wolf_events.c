@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 12:43:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 11:57:32 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/14 15:52:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ static void		ft_move(int i, t_w3d *w3d, t_ptd *cpos, t_ptd *cdir)
 	{
 		if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 0)
 			cpos->x += cdir->x * s;
+//		else if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 21)
+
 		if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 0)
 			cpos->y += cdir->y * s;
+//		else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 21)
 	}
 	if (i == 0)
 	{

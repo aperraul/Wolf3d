@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 14:40:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 16:57:32 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/04/14 15:52:48 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,46 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 			sd->x += dd->x;
 			m->x += w3d->ray.step.x;
 			w3d->ray.side = 0;
+			if (w3d->cam.pos.x > m->x)
+			{
+				if (w3d->portal.type == 1)
+					w3d->portal.orib = 0; // N_wall
+				else
+					w3d->portal.orio = 0;
+			}
+				
+			else
+			{
+				if (w3d->portal.type == 1)
+					w3d->portal.orib = 1;
+				else
+					w3d->portal.orio = 1; // S_wall
+			}
 		}
 		else
 		{
 			sd->y += dd->y;
 			m->y += w3d->ray.step.y;
 			w3d->ray.side = 1;
+			if (w3d->cam.pos.y > m->y)
+			{
+				if (w3d->portal.type == 1)
+					w3d->portal.orib = 2;
+				else
+					w3d->portal.orio = 2; // E_wall
+			}
+			else
+			{
+				if (w3d->portal.type == 1)
+					w3d->portal.orib = 3;
+				else
+					w3d->portal.orio = 3; // O_wall
+			}
 		}
 	}
-	if (w3d->portal.type == 21)
+	if (w3d->portal.type == 1)
 		w3d->portal.nbb++;
-	else if (w3d->portal.type == 22)
+	else if (w3d->portal.type == 2)
 		w3d->portal.nbo++;
 
 	if (w3d->portal.nbb > 1)
@@ -45,7 +74,7 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 		w3d->portal.nbo--;
 	}
 
-	if (w3d->portal.type == 21)
+	if (w3d->portal.type == 1)
 	{
 		w3d->portal.locb.x = m->x;
 		w3d->portal.locb.y = m->y;
@@ -54,7 +83,7 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 		else
 			w3d->portal.ovb = w3d->map[m->x][m->y];
 	}
-	if (w3d->portal.type == 22)
+	if (w3d->portal.type == 2)
 	{
 		w3d->portal.loco.x = m->x;
 		w3d->portal.loco.y = m->y;
@@ -63,7 +92,19 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 		else
 			w3d->portal.ovo = w3d->map[m->x][m->y];
 	}
-	w3d->map[m->x][m->y] = w3d->portal.type;
+	if (w3d->portal.type == 1)
+	{
+		w3d->map[m->x][m->y] = 21;
+		w3d->portal.posb.x = m->x;
+		w3d->portal.posb.y = m->y;
+	}
+	else
+	{
+		w3d->map[m->x][m->y] = 22;
+		w3d->portal.poso.x = m->x;
+		w3d->portal.poso.y = m->y;
+	}
+
 }
 
 static void		ft_do_step(t_w3d *w3d, t_ptd *d, t_ptd *p, t_ptd *sdt)
@@ -123,12 +164,12 @@ void			ft_wolf_portal(t_w3d *w3d)
 {
 	if (w3d->port == 1)
 	{
-		w3d->portal.type = 21;
+		w3d->portal.type = 1; // blue_portal
 		ft_set_portal(w3d);
 	}
 	if (w3d->port == -1)
 	{
-		w3d->portal.type = 22;
+		w3d->portal.type = 2; // orange_portal
 		ft_set_portal(w3d);
 	}
 }
