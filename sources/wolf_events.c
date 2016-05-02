@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 12:43:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 15:11:30 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/02 15:44:26 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			ft_wolf_events(t_w3d *w3d)
 	}
 	if (w3d->cam.keym == 2 || w3d->cam.keym == -2)
 	{
-		if (w3d->cam.keym == 2)
+		if (w3d->cam.keym == -2)
 			ft_move_right(w3d, &w3d->cam.pos, &w3d->cam.dir);
 		else
 			ft_move_left(w3d, &w3d->cam.pos, &w3d->cam.dir);
