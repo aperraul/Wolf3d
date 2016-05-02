@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 14:40:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/14 15:52:48 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/02 12:41:51 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 			if (w3d->cam.pos.x > m->x)
 			{
 				if (w3d->portal.type == 1)
-					w3d->portal.orib = 0; // N_wall
+					w3d->portal.orib = 1; // N_wall
 				else
-					w3d->portal.orio = 0;
+					w3d->portal.orio = 1;
 			}
 				
 			else
 			{
 				if (w3d->portal.type == 1)
-					w3d->portal.orib = 1;
+					w3d->portal.orib = 3;
 				else
-					w3d->portal.orio = 1; // S_wall
+					w3d->portal.orio = 3; // S_wall
 			}
 		}
 		else
@@ -52,9 +52,9 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 			else
 			{
 				if (w3d->portal.type == 1)
-					w3d->portal.orib = 3;
+					w3d->portal.orib = 4;
 				else
-					w3d->portal.orio = 3; // O_wall
+					w3d->portal.orio = 4; // O_wall
 			}
 		}
 	}
