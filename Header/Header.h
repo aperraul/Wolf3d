@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/03 12:36:29 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 15:32:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,18 @@ typedef struct	s_delt
 	double				dt;
 }				t_delt;
 
+typedef struct	s_texture
+{
+	t_img		bleustone;
+	t_img		colorstone;
+	t_img		eagle;
+	t_img		grestone;
+	t_img		mossy;
+	t_img		purplestone;
+	t_img		redbrick;
+	t_img		wood;
+}				t_texture;
+
 typedef struct	s_portal
 {
 	int			type;
@@ -92,6 +104,8 @@ typedef struct	s_w3d
 	t_ray		ray;
 	t_wall		wall;
 	t_portal	portal;
+	t_texture	texture;
+	int			***tab_textures;
 	int			port;
 }				t_w3d;
 
