@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/03 15:32:43 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:48:50 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ typedef struct	s_delt
 
 typedef struct	s_texture
 {
-	t_img		bleustone;
+	t_img		bluestone;
 	t_img		colorstone;
 	t_img		eagle;
-	t_img		grestone;
+	t_img		greystone;
 	t_img		mossy;
 	t_img		purplestone;
 	t_img		redbrick;
@@ -127,5 +127,6 @@ void		ft_move_forward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void		ft_move_backward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void		ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void		ft_move_right(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
+void		ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex);
 
 #endif

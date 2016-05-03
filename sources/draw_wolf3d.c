@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 14:54:44 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:44:33 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void			ft_draw_wolf3d(t_w3d *w3d, t_wall *w, t_ray *r)
 	w->dend = w->hline / 2 + WIN_Y / 2;
 	if (w->dstart >= WIN_Y)
 		w->dstart = WIN_Y - 1;
-	ft_choose_color(w3d, &w3d->ray.map);
+	//ft_choose_color(w3d, &w3d->ray.map);
 	ft_draw_linew3d(w3d, w3d->wall.wall_x, w3d->wall.dstart, w3d->wall.dend);
 }

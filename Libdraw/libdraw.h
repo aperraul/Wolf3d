@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/23 14:57:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/03 12:56:54 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:45:31 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct	s_line
 
 typedef struct	s_img
 {
+	int			loaded;
 	t_pt		size;
 	long int	octet;
 	char		*data;
