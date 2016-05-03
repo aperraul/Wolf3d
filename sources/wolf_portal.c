@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 14:40:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 12:41:51 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:36:10 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,46 +65,43 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 
 	if (w3d->portal.nbb > 1)
 	{
-		w3d->map[w3d->portal.locb.x][w3d->portal.locb.y] = w3d->portal.ovb;
+		w3d->map[w3d->portal.posb.x][w3d->portal.posb.y] = w3d->portal.ovb;
 		w3d->portal.nbb--;
 	}
 	if (w3d->portal.nbo > 1)
 	{
-		w3d->map[w3d->portal.loco.x][w3d->portal.loco.y] = w3d->portal.ovo;
+		w3d->map[w3d->portal.poso.x][w3d->portal.poso.y] = w3d->portal.ovo;
 		w3d->portal.nbo--;
 	}
 
 	if (w3d->portal.type == 1)
 	{
-		w3d->portal.locb.x = m->x;
-		w3d->portal.locb.y = m->y;
-		if (w3d->portal.locb.x == w3d->portal.loco.x && w3d->portal.locb.y == w3d->portal.loco.y)
+		w3d->portal.posb.x = m->x;
+		w3d->portal.posb.y = m->y;
+		if (w3d->portal.posb.x == w3d->portal.poso.x && w3d->portal.posb.y == w3d->portal.poso.y)
+		{
+			w3d->portal.poso = ft_make_pt(-1, -1);
+			w3d->portal.nbo -= 1;
 			w3d->portal.ovb = w3d->portal.ovo;
+		}
 		else
 			w3d->portal.ovb = w3d->map[m->x][m->y];
+		w3d->map[m->x][m->y] = 21;
 	}
 	if (w3d->portal.type == 2)
 	{
-		w3d->portal.loco.x = m->x;
-		w3d->portal.loco.y = m->y;
-		if (w3d->portal.loco.x == w3d->portal.locb.x && w3d->portal.loco.y == w3d->portal.locb.y)
-			w3d->portal.ovo = w3d->portal.ovb;
-		else
-			w3d->portal.ovo = w3d->map[m->x][m->y];
-	}
-	if (w3d->portal.type == 1)
-	{
-		w3d->map[m->x][m->y] = 21;
-		w3d->portal.posb.x = m->x;
-		w3d->portal.posb.y = m->y;
-	}
-	else
-	{
-		w3d->map[m->x][m->y] = 22;
 		w3d->portal.poso.x = m->x;
 		w3d->portal.poso.y = m->y;
+		if (w3d->portal.poso.x == w3d->portal.posb.x && w3d->portal.poso.y == w3d->portal.posb.y)
+		{
+			w3d->portal.posb = ft_make_pt(-1, -1);
+			w3d->portal.nbb -= 1;
+			w3d->portal.ovo = w3d->portal.ovb;
+		}
+		else
+			w3d->portal.ovo = w3d->map[m->x][m->y];
+		w3d->map[m->x][m->y] = 22;
 	}
-
 }
 
 static void		ft_do_step(t_w3d *w3d, t_ptd *d, t_ptd *p, t_ptd *sdt)

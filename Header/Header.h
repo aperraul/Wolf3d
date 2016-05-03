@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 15:02:36 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:36:29 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ typedef struct	s_portal
 	int			nbo;
 	t_pt		posb;
 	t_pt		poso;
-	t_pt		locb;
-	t_pt		loco;
 	int			ovb;
 	int			ovo;
 	int			orib;

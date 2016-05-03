@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 16:54:39 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:36:53 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_w3d	*ft_w3d_init(void)
 	w3d->port = 0;
 	w3d->portal.nbb = 0;
 	w3d->portal.nbo = 0;
-	w3d->portal.locb = ft_make_pt(-1, -1);
-	w3d->portal.loco = ft_make_pt(-1, -1);
+	w3d->portal.posb = ft_make_pt(-1, -1);
+	w3d->portal.poso = ft_make_pt(-1, -1);
 	return (w3d);
 }

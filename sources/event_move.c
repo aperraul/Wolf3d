@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 15:02:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 16:09:17 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:01:28 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void		ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir)
 		ft_portal_b_to_o(w3d);
 	else if (w3d->map[(int)(cpos->x - cdir->y * s)][(int)(cpos->y)] == 22)
 		ft_portal_o_to_b(w3d);
-	if (w3d->map[(int)(cpos->x)][(int)(cpos->x + cdir->y * s)] == 0)
+	if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->x * s)] == 0)
 		cpos->y += cdir->x * s;
-	else if (w3d->map[(int)(cpos->x)][(int)(cpos->x + cdir->y * s)] == 21)
+	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->x * s)] == 21)
 		ft_portal_b_to_o(w3d);
-	else if (w3d->map[(int)(cpos->x)][(int)(cpos->x + cdir->y * s)] == 22)
+	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->x * s)] == 22)
 		ft_portal_o_to_b(w3d);
 }

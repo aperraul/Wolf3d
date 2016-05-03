@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 15:31:30 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 17:56:08 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:37:51 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int		ft_verif_tp(t_w3d *w3d, int p_ori, t_pt p_pos)
 	t_ptd	c_pos;
 
 	c_pos = w3d->cam.pos;
-	ft_putnbr(p_ori);
 	if (p_ori == 1)
 	{
 		if (c_pos.y >= p_pos.y && c_pos.y <= p_pos.y + 1 && c_pos.x > p_pos.x + 1)
@@ -67,7 +66,7 @@ static int		ft_verif_tp(t_w3d *w3d, int p_ori, t_pt p_pos)
 
 void			ft_portal_b_to_o(t_w3d *w3d)
 {
-	if (ft_verif_tp(w3d, w3d->portal.orib, w3d->portal.locb))
+	if (ft_verif_tp(w3d, w3d->portal.orib, w3d->portal.posb) && w3d->portal.nbo > 0)
 	{
 		ft_port_rot(w3d->portal.orib, w3d->portal.orio, 1, w3d);
 		if (w3d->portal.orio == 1)
@@ -95,7 +94,7 @@ void			ft_portal_b_to_o(t_w3d *w3d)
 
 void		ft_portal_o_to_b(t_w3d *w3d)
 {
-	if (ft_verif_tp(w3d, w3d->portal.orio, w3d->portal.loco))
+	if (ft_verif_tp(w3d, w3d->portal.orio, w3d->portal.poso) && w3d->portal.nbb > 0)
 	{
 		ft_port_rot(w3d->portal.orib, w3d->portal.orio, 2, w3d);
 		if (w3d->portal.orib == 1)
