@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 14:40:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/03 12:50:10 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/10 17:26:58 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 		}
 		else
 			w3d->portal.ovb = w3d->map[m->x][m->y];
-		w3d->map[m->x][m->y] = 21;
+		w3d->map[m->x][m->y] = 28;
 	}
 	if (w3d->portal.type == 2)
 	{
@@ -100,7 +100,7 @@ static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 		}
 		else
 			w3d->portal.ovo = w3d->map[m->x][m->y];
-		w3d->map[m->x][m->y] = 22;
+		w3d->map[m->x][m->y] = 29;
 	}
 }
 

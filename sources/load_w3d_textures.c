@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/10 12:13:30 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/10 17:25:11 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		ft_load_img(t_mlx *mlx, t_img *img, char *texture)
 
 static void		ft_tab_xpm(t_texture *tex)
 {
-	tex->tab_xpm = (t_img **)ft_memalloc(sizeof(t_img) * 8);
+	tex->tab_xpm = (t_img **)ft_memalloc(sizeof(t_img) * 10);
 	tex->tab_xpm[0] = &tex->bluestone;
 	tex->tab_xpm[1] = &tex->colorstone;
 	tex->tab_xpm[2] = &tex->eagle;
@@ -43,6 +43,8 @@ static void		ft_tab_xpm(t_texture *tex)
 	tex->tab_xpm[5] = &tex->purplestone;
 	tex->tab_xpm[6] = &tex->redbrick;
 	tex->tab_xpm[7] = &tex->wood;
+	tex->tab_xpm[8] = &tex->blueportal;
+	tex->tab_xpm[9] = &tex->orangeportal;
 }
 
 static void		ft_tab_texture(t_texture *tex)
@@ -51,9 +53,9 @@ static void		ft_tab_texture(t_texture *tex)
 	int		x;
 	int		y;
 
-	tex->tab_textures = (int ***)ft_memalloc(sizeof(int **) * 8);
+	tex->tab_textures = (int ***)ft_memalloc(sizeof(int **) * 10);
 	a = -1;
-	while (++a < 8)
+	while (++a < 10)
 	{
 		x = tex->tab_xpm[a]->size.x;
 		tex->tab_textures[a] = (int **)ft_memalloc(sizeof(int *) * x);
@@ -81,8 +83,11 @@ void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex)
 	k += ft_load_img(mlx, &tex->purplestone, "./textures/purplestone.xpm");
 	k += ft_load_img(mlx, &tex->redbrick, "./textures/redbrick.xpm");
 	k += ft_load_img(mlx, &tex->wood, "./textures/wood.xpm");
+	k += ft_load_img(mlx, &tex->blueportal, "./textures/blueportal.xpm");
+	k += ft_load_img(mlx, &tex->orangeportal, "./textures/orangeportal.xpm");
 	if (k > 0)
 	{
+		(void)w3d;
 		exit(0);
 	}
 	ft_tab_xpm(tex);
