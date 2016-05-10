@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/27 15:26:56 by aperraul          #+#    #+#              #
-#    Updated: 2016/03/24 16:32:27 by aperraul         ###   ########.fr        #
+#    Updated: 2016/05/10 12:12:43 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = draw.a
 
 SRCS = draw_line.c \
 	   draw_pixel.c \
+	   get_pixel.c \
 	   ft_make_3dpt.c \
 	   ft_make_line.c \
 	   ft_make_pt.c \
@@ -33,6 +34,7 @@ SRCS = draw_line.c \
 
 OBJS = draw_line.o \
 	   draw_pixel.o \
+	   get_pixel.o \
 	   ft_make_3dpt.o \
 	   ft_make_line.o \
 	   ft_make_pt.o \

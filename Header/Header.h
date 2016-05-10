@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/03 16:48:50 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/10 12:13:00 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef struct	s_texture
 	t_img		purplestone;
 	t_img		redbrick;
 	t_img		wood;
+	int			***tab_textures;
+	t_img		**tab_xpm;
 }				t_texture;
 
 typedef struct	s_portal
@@ -105,7 +107,6 @@ typedef struct	s_w3d
 	t_wall		wall;
 	t_portal	portal;
 	t_texture	texture;
-	int			***tab_textures;
 	int			port;
 }				t_w3d;
 
