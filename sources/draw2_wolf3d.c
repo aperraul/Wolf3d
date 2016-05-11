@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/11 14:33:27 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/11 15:28:51 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,36 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 int		ft_draw_texture(t_w3d *w3d, int pos, int tex_value, int size_y)
 {
 	int			*colon;
+	int			*colon2;
 	int			tex_y;
 	t_wall		*w;
+	int			val;
 	int			color;
 	long int	a;
 
 	w = &w3d->wall;
 	size_y = w3d->texture.tab_xpm[tex_value]->size.y;
+	if (tex_value == 8 || tex_value == 9)
+	{
+		val = tex_value == 8 ? w3d->portal.ovb - 20 : w3d->portal.ovo - 20;
+		colon2 = w3d->texture.tab_textures[val][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[tex_value]->size.x)];
+	}
 	colon = w3d->texture.tab_textures[tex_value][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[tex_value]->size.x)];
 	while (w->dstart < w->dend)
 	{
 		a = w->dstart * 256 - WIN_Y * 128 + w->hline * 128;
 		tex_y = ((a * size_y) / w->hline) / 256;
-		color = colon[tex_y];
+		if (colon[tex_y] == -16777216)
+			color = colon2[tex_y];
+		else
+		{
+			if ((tex_value == 8 && ft_wall_side(w3d) == w3d->portal.orib) || (tex_value == 9 && ft_wall_side(w3d) == w3d->portal.orio))
+				color = colon[tex_y];
+			else if (tex_value == 8 || tex_value == 9)
+				color = colon2[tex_y];
+			else
+				color = colon[tex_y];
+		}
 		ft_memcpy(w3d->mlx->mlx_img->data + pos, &color, w3d->mlx->mlx_img->octet);
 		pos += w3d->mlx->mlx_img->width;
 		w->dstart++;

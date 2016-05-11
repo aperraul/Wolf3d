@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/11 14:27:06 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/11 15:30:58 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x)
 		pos = ft_draw_top(w3d, x);
 		tex_value = w3d->map[r->map.x][r->map.y] - 20;
 		pos = ft_draw_texture(w3d, pos, tex_value, 0);
-		pos += w3d->wall.hline * w3d->mlx->mlx_img->width;
+//		pos += w3d->wall.hline * w3d->mlx->mlx_img->width; //<------
 		ft_draw_bot(w3d, pos);
 	}
 
