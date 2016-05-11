@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/10 17:25:11 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/11 14:10:55 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		ft_load_img(t_mlx *mlx, t_img *img, char *texture)
 	void	*d;
 
 	img->endian= 0;
-	img->p_img = mlx_xpm_file_to_image(mlx->p_mlx, texture, & img->size.x, 
+	img->p_img = mlx_xpm_file_to_image(mlx->p_mlx, texture, &img->size.x, 
 			&img->size.y);
 	if (!img->p_img)
 	{
@@ -87,9 +87,11 @@ void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex)
 	k += ft_load_img(mlx, &tex->orangeportal, "./textures/orangeportal.xpm");
 	if (k > 0)
 	{
+		ft_putstr("textures load fail");
 		(void)w3d;
 		exit(0);
 	}
+	ft_putstr("textures load succes");
 	ft_tab_xpm(tex);
 	ft_tab_texture(tex);
 }

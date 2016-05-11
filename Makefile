@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/05/10 15:43:37 by aperraul         ###   ########.fr        #
+#    Updated: 2016/05/11 11:28:56 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC = ./sources/main.c \
 	  ./sources/wolf_portal.c \
 	  ./sources/portal_move.c \
 	  ./sources/load_w3d_textures.c \
+	  ./sources/draw2_wolf3d.c \
+	  ./sources/ft_wall_side.c \
 	  ./gnl/get_next_line.c \
 
 OBJS = ./main.o \
@@ -40,6 +42,8 @@ OBJS = ./main.o \
 	   ./wolf_portal.o \
 	   ./portal_move.o \
 	   ./load_w3d_textures.o \
+	   ./draw2_wolf3d.o \
+	   ./ft_wall_side.o \
 	   ./get_next_line.o \
 
 DRAW = ./Libdraw/draw.a
