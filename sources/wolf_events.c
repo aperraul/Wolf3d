@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 12:43:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 14:07:06 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 16:41:10 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void		ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r)
 
 void		ft_wolf_events(t_w3d *w3d)
 {
-	w3d->cam.mspeed = w3d->delt.dt * 5;
-	w3d->cam.rspeed = w3d->delt.dt * 3;
+	w3d->cam.mspeed = w3d->delt.dt * 2.5;
+	w3d->cam.rspeed = w3d->delt.dt * 2;
 	if (w3d->cam.keym == 1 || w3d->cam.keym == -1)
 	{
 		if (w3d->cam.keym == 1)

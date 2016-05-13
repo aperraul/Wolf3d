@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 10:39:59 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 17:20:59 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int		ft_load_img(t_mlx *mlx, t_img *img, char *texture)
 {
 	void	*d;
 
-	img->endian= 0;
-	img->p_img = mlx_xpm_file_to_image(mlx->p_mlx, texture, &img->size.x, 
-			&img->size.y);
+	img->endian = 0;
+	img->p_img = mlx_xpm_file_to_image(mlx->p_mlx, texture, &img->size.x
+			, &img->size.y);
 	if (!img->p_img)
 	{
 		img->loaded = 0;

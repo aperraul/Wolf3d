@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 15:29:03 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 17:27:02 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	ft_draw_bot(t_w3d *w3d, int x)
 	int		i;
 	int		s;
 
-	s = w3d->wall.dend;
+	s = w3d->wall.dend - 1;
 	color = 0x009900;
 	i = WIN_Y;
 	while (++s < i)
