@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 10:39:13 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 15:29:03 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 	return (tex_x);
 }
 
-int		ft_draw_texture(t_w3d *w3d, int pos, int tex_value, int size_y)
+void		ft_draw_texture(t_w3d *w3d, int tex_value, int size_y)
 {
 	int			*colon;
 	int			*colon2;
@@ -76,30 +76,20 @@ int		ft_draw_texture(t_w3d *w3d, int pos, int tex_value, int size_y)
 //pos += w3d->mlx->mlx_img->width;
 		w->dstart++;
 	}
-	pos = 1;
-	return (pos);
 }
 
-int		ft_draw_top(t_w3d *w3d, int x)
+void		ft_draw_top(t_w3d *w3d, int x)
 {
 	int		i;
-	int		pos;
 	int		color;
 
-//	pos = x * w3d->mlx->mlx_img->octet;
 	color = 0x3399FF;
 	i = -1;
 	while (++i < w3d->wall.dstart)
-	{
 		ft_draw_pixel(w3d->mlx, color, ft_make_pt(x, i));
-//		ft_memcpy(w3d->mlx->mlx_img->data + pos, &color, w3d->mlx->mlx_img->octet);
-//		pos += w3d->mlx->mlx_img->width;
-	}
-	pos = 1;
-	return (pos);
 }
 
-void	ft_draw_bot(t_w3d *w3d, int pos)
+void	ft_draw_bot(t_w3d *w3d, int x)
 {
 	int		color;
 	int		i;
@@ -109,9 +99,5 @@ void	ft_draw_bot(t_w3d *w3d, int pos)
 	color = 0x009900;
 	i = WIN_Y;
 	while (++s < i)
-	{
-		ft_draw_pixel(w3d->mlx, color, ft_make_pt(pos, s));
-//		ft_memcpy(w3d->mlx->mlx_img->data + pos, &color, w3d->mlx->mlx_img->octet);
-//		pos += w3d->mlx->mlx_img->width;
-	}
+		ft_draw_pixel(w3d->mlx, color, ft_make_pt(x, s));
 }

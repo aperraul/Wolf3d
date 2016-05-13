@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/05/11 11:28:56 by aperraul         ###   ########.fr        #
+#    Updated: 2016/05/13 16:27:10 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = ./sources/main.c \
 	  ./sources/event_move.c \
 	  ./sources/wolf_events.c \
 	  ./sources/wolf_portal.c \
+	  ./sources/portal_set.c \
 	  ./sources/portal_move.c \
 	  ./sources/load_w3d_textures.c \
 	  ./sources/draw2_wolf3d.c \
@@ -40,6 +41,7 @@ OBJS = ./main.o \
 	   ./wolf_events.o \
 	   ./event_move.o \
 	   ./wolf_portal.o \
+	   ./portal_set.o \
 	   ./portal_move.o \
 	   ./load_w3d_textures.o \
 	   ./draw2_wolf3d.o \

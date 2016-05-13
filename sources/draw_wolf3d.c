@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 12:20:03 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 15:28:55 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,25 @@ int				ft_choose_color(int val, t_ray *r)
 	return (c);
 }
 
-void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x)
+void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x, int map_val)
 {
 	int		tex_value;
-	long int	pos;
 
-	pos = 0;
-	if (w3d->wall.hline > WIN_Y)
-		w3d->wall.hline = WIN_Y;
-	if (w3d->map[r->map.x][r->map.y] >= 1 && w3d->map[r->map.x][r->map.y] <= 7)
+	if (map_val >= 1 && map_val <= 7)
 	{
 		/* monocouleur */
-		w3d->wall.color = ft_choose_color(w3d->map[r->map.x][r->map.y], r);
-		pos = ft_draw_top(w3d, x);
+		w3d->wall.color = ft_choose_color(map_val, r);
+		ft_draw_top(w3d, x);
 		ft_draw_linew3d(w3d, w3d->wall.wall_x, w3d->wall.dstart, w3d->wall.dend);
-//		pos += w3d->wall.hline * w3d->mlx->mlx_img->width;
 		ft_draw_bot(w3d, x);
 	}
-/*	else if (w3d->map[r->map.x][r->map.y] >= 20 && w3d->map[r->map.x][r->map.y] <= 29)
+	else if (map_val >= 20 && map_val <= 29)
 	{
 		// textured
 		x = 0;
-//		pos = ft_draw_top(w3d, x);
-		tex_value = w3d->map[r->map.x][r->map.y] - 20;
-		pos = ft_draw_texture(w3d, pos, tex_value, 0);
-//		ft_draw_bot(w3d, pos);
-	}*/
+		ft_draw_top(w3d, x);
+		tex_value = map_val - 20;
+		ft_draw_texture(w3d, tex_value, 0);
+		ft_draw_bot(w3d, x);
+	}
 }
