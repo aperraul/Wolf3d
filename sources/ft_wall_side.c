@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 10:53:24 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/11 11:30:00 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:39:48 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 int		ft_wall_side(t_w3d *w3d)
 {

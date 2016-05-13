@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 12:43:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 15:44:26 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 12:09:08 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 void		ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r)
 {
@@ -36,10 +36,13 @@ void		ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r)
 		cplan->y = old_plan_x * sin(r) + cplan->y * cos(r);
 	}
 }
-
-void			ft_wolf_events(t_w3d *w3d)
+#include <stdio.h>
+void		ft_wolf_events(t_w3d *w3d)
 {
 	w3d->cam.mspeed = w3d->delt.dt * 5;
+	printf("dt : %f\ncam_speed : %f\n", w3d->delt.dt, w3d->cam.mspeed);
+	if (w3d->cam.mspeed > 0.9)
+		printf("----------------error HERE-----------------------\n");
 	w3d->cam.rspeed = w3d->delt.dt * 3;
 	if (w3d->cam.keym == 1 || w3d->cam.keym == -1)
 	{

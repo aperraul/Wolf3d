@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 17:18:01 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:10:16 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:39:25 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 int		ft_check_line(char *line)
 {

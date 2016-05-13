@@ -6,29 +6,34 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 15:02:54 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/10 17:28:30 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 12:51:28 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
+#include <stdio.h>
 
 void		ft_move_forward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir)
 {
 	double	s;
 
-	s = w3d->cam.mspeed;
+/*	printf("\n%f", cpos->x);
+	printf(" || ");
+	printf("%f\n", cpos->y);
+	ft_putchar('\n');
+*/	s = w3d->cam.mspeed;
 	if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 0)
 		cpos->x += cdir->x * s;
-	else if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 28)
-		ft_portal_b_to_o(w3d);
-	else if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 29)
+//	else if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 28)
+//		ft_portal_b_to_o(w3d);
+//	else if (w3d->map[(int)(cpos->x + cdir->x * s)][(int)(cpos->y)] == 29)
 		ft_portal_o_to_b(w3d);
 	if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 0)
 		cpos->y += cdir->y * s;
-	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 28)
-		ft_portal_b_to_o(w3d);
-	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 29)
-		ft_portal_o_to_b(w3d);
+//	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 28)
+//		ft_portal_b_to_o(w3d);
+//	else if (w3d->map[(int)(cpos->x)][(int)(cpos->y + cdir->y * s)] == 29)
+//		ft_portal_o_to_b(w3d);
 }
 
 void		ft_move_backward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir)

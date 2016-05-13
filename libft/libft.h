@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:22:00 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/08 15:52:21 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:37:53 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_pt			**ft_alloc_pt(t_pt size);
 t_pt			**ft_free_pt(t_pt **tab);
-t_lstline	*ft_add_list(t_lstline *begin, char *line);
-t_lstline	*ft_next_list(void);
-void	ft_lstline_del(t_lstline *alst);
+t_lstline		*ft_add_list(t_lstline *begin, char *line);
+t_lstline		*ft_next_list(void);
+void			ft_lstline_del(t_lstline *alst);
 
 #endif

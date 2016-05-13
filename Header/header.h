@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Header.h                                           :+:      :+:    :+:   */
+/*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/11 12:43:53 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:36:24 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,28 +112,29 @@ typedef struct	s_w3d
 	int			port;
 }				t_w3d;
 
-t_w3d		*ft_w3d_init();
-void		ft_get_map(t_w3d *w3d, int ret);
-int			ft_check_line(char *line);
-void		ft_pre_w3d(t_w3d *w3d);
-void		ft_wolf3d(t_w3d *w3d);
-void		ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x);
-int			ft_wolf_move(int keycode, t_w3d *w3d);
-int			ft_release_key(int keycode, t_w3d *w3d);
-int			ft_wolf3d_loop(t_w3d *w3d);
-int			ft_wall_side(t_w3d *w3d);
-int			ft_draw_top(t_w3d *w3d, int x);
-void		ft_draw_bot(t_w3d *w3d, int pos);
-void		ft_wolf_events(t_w3d *w3d);
-void		ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r);
-void		ft_wolf_portal(t_w3d *w3d);
-void		ft_portal_b_to_o(t_w3d *w3d);
-void		ft_portal_o_to_b(t_w3d *w3d);
-void		ft_move_forward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
-void		ft_move_backward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
-void		ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
-void		ft_move_right(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
-void		ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex);
-int			ft_draw_texture(t_w3d *w3d, int pos, int tex_value, int size_y);
+t_w3d			*ft_w3d_init();
+void			ft_get_map(t_w3d *w3d, int ret);
+int				ft_check_line(char *line);
+void			ft_pre_w3d(t_w3d *w3d);
+void			ft_wolf3d(t_w3d *w3d);
+void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x);
+int				ft_wolf_move(int keycode, t_w3d *w3d);
+int				ft_release_key(int keycode, t_w3d *w3d);
+int				ft_choose_color(int val, t_ray *r);
+int				ft_wolf3d_loop(t_w3d *w3d);
+int				ft_wall_side(t_w3d *w3d);
+int				ft_draw_top(t_w3d *w3d, int x);
+void			ft_draw_bot(t_w3d *w3d, int x);
+void			ft_wolf_events(t_w3d *w3d);
+void			ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r);
+void			ft_wolf_portal(t_w3d *w3d);
+void			ft_portal_b_to_o(t_w3d *w3d);
+void			ft_portal_o_to_b(t_w3d *w3d);
+void			ft_move_forward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
+void			ft_move_backward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
+void			ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
+void			ft_move_right(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
+void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex);
+int				ft_draw_texture(t_w3d *w3d, int pos, int tex_value, int size_y);
 
 #endif

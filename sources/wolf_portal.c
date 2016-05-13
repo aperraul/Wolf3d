@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 14:40:31 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/10 17:26:58 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:40:27 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 static void		ft_do_dda(t_w3d *w3d, t_ptd *sd, t_ptd *dd, t_pt *m)
 {

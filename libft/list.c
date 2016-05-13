@@ -6,13 +6,13 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:11:03 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/06 11:42:26 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:37:32 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstline_del(t_lstline *alst)
+void		ft_lstline_del(t_lstline *alst)
 {
 	t_lstline	*temp1;
 	t_lstline	*temp2;

@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/02 15:12:28 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:41:22 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 int		ft_wolf_move(int keycode, t_w3d *w3d)
 {
@@ -32,7 +32,6 @@ int		ft_wolf_move(int keycode, t_w3d *w3d)
 		w3d->port = 1;
 	if (keycode == 14)
 		w3d->port = -1;
-
 	return (0);
 }
 

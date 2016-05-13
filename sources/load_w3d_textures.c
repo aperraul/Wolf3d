@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/11 14:10:55 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 10:39:59 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 static int		ft_load_img(t_mlx *mlx, t_img *img, char *texture)
 {

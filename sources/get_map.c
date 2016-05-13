@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/04/13 11:49:19 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 11:17:57 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 static void		ft_fill_tab(t_lstline *list, int x, t_w3d *w3d)
 {
@@ -18,16 +18,15 @@ static void		ft_fill_tab(t_lstline *list, int x, t_w3d *w3d)
 	int		i;
 	int		j;
 	int		k;
-	int		*nb_x_line;
 
 	w3d->map = (int **)ft_memalloc(sizeof(int *) * (x + 1));
-	nb_x_line = (int *)ft_memalloc(sizeof(int) * (x + 1));
+	w3d->nb_x_line = (int *)ft_memalloc(sizeof(int) * (x + 1));
 	j = -1;
 	while (++j < x)
 	{
 		str = ft_strsplit(list->line, ' ');
-		nb_x_line[j] = ft_memlen((void **)str);
-		w3d->map[j] = (int *)ft_memalloc(sizeof(int) * (nb_x_line[j] + 1));
+		w3d->nb_x_line[j] = ft_memlen((void **)str);
+		w3d->map[j] = (int *)ft_memalloc(sizeof(int) * (w3d->nb_x_line[j] + 1));
 		i = -1;
 		while (str[++i])
 			w3d->map[j][i] = ft_atoi(str[i]);

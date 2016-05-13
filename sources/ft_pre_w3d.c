@@ -6,11 +6,11 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 11:56:48 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/10 12:16:02 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/13 11:25:11 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Header/Header.h"
+#include "../Header/header.h"
 
 void	ft_pre_w3d(t_w3d *w3d)
 {
