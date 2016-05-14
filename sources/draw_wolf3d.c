@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 17:25:44 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/14 11:23:44 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		ft_draw_line_w(t_w3d *w3d, int x, int ds, int de)
 	ft_draw_line(ft_make_line(x, ds, x, de), w3d->mlx, w3d->wall.color);
 }
 
-int				ft_choose_color(int val, t_ray *r)
+int				ft_choose_color(int val, int side)
 {
 	t_rgb	rgb;
 	int		c;
@@ -36,7 +36,7 @@ int				ft_choose_color(int val, t_ray *r)
 		c = (0x550544);
 	else if (val == 7)
 		c = (0xffa500);
-	if (r->side == 1)
+	if (side == 1)
 	{
 		rgb = ft_hexa_to_rgb(c);
 		rgb.r /= 2;
@@ -53,14 +53,13 @@ void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x, int map_val)
 
 	if (map_val >= 1 && map_val <= 7)
 	{
-		w3d->wall.color = ft_choose_color(map_val, r);
+		w3d->wall.color = ft_choose_color(map_val, r->side);
 		ft_draw_top(w3d, x);
 		ft_draw_line_w(w3d, w3d->wall.wall_x, w3d->wall.dstart, w3d->wall.dend);
 		ft_draw_bot(w3d, x);
 	}
 	else if (map_val >= 20 && map_val <= 29)
 	{
-		x = 0;
 		ft_draw_top(w3d, x);
 		tex_value = map_val - 20;
 		ft_draw_texture(w3d, tex_value, 0);
