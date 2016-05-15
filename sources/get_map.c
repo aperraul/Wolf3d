@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 11:17:57 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/15 12:46:35 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ static void		ft_fill_tab(t_lstline *list, int x, t_w3d *w3d)
 	}
 }
 
+static void		ft_line_error(t_lstline *list, t_w3d *w3d)
+{
+	if (list != NULL)
+		ft_lstline_del(list);
+	if (w3d->nb_spawn < 1)
+		ft_putstr("error: no spawn set\n");
+	ft_putstr("error: invalid map\n");
+	w3d->map = NULL;
+	return ;
+}
+
+
 void			ft_get_map(t_w3d *w3d, int ret)
 {
 	char		*line;
@@ -47,14 +59,24 @@ void			ft_get_map(t_w3d *w3d, int ret)
 	list = NULL;
 	while (get_next_line(ret, &line) > 0)
 	{
-		if (ft_check_line(line) == 0)
+		if (ft_check_line(line, w3d) == 0)
 		{
-			w3d->map = NULL;
+			ft_line_error(list, w3d);
 			return ;
 		}
 		list = ft_add_list(list, line);
 		w3d->nb_lines++;
 	}
+	if (w3d->nb_lines < 3 || w3d->nb_spawn < 1)
+	{
+		ft_line_error(list, w3d);
+		return;
+	}
 	ft_fill_tab(list, w3d->nb_lines, w3d);
+	if (!check_map(w3d))
+	{
+		ft_line_error(list, w3d);
+		return ;
+	}
 	ft_lstline_del(list);
 }

@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/14 11:23:43 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/15 12:33:20 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ typedef struct	s_portal
 
 typedef struct	s_w3d
 {
+	int			nb_spawn;
+	t_pt		spawn;
 	t_mlx		*mlx;
 	int			nb_lines;
 	int			*nb_x_line;
@@ -114,7 +116,8 @@ typedef struct	s_w3d
 
 t_w3d			*ft_w3d_init();
 void			ft_get_map(t_w3d *w3d, int ret);
-int				ft_check_line(char *line);
+int				ft_check_line(char *line, t_w3d *w3d);
+int				ft_check_map(t_w3d *w3d);
 void			ft_pre_w3d(t_w3d *w3d);
 void			ft_wolf3d(t_w3d *w3d);
 void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x, int map_val);
