@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/15 12:46:35 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/15 17:27:42 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static void		ft_line_error(t_lstline *list, t_w3d *w3d)
 	return ;
 }
 
-
 void			ft_get_map(t_w3d *w3d, int ret)
 {
 	char		*line;
 	t_lstline	*list;
+	int			error;
 
 	line = NULL;
 	list = NULL;
@@ -73,9 +73,12 @@ void			ft_get_map(t_w3d *w3d, int ret)
 		return;
 	}
 	ft_fill_tab(list, w3d->nb_lines, w3d);
-	if (!check_map(w3d))
+	if ((error = ft_check_map(w3d)) != 0)
 	{
 		ft_line_error(list, w3d);
+		ft_putstr("error: ");
+		ft_putnbr(error);
+		ft_putstr(" error on the map\n");
 		return ;
 	}
 	ft_lstline_del(list);

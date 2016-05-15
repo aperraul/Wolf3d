@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 17:20:59 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/15 17:37:51 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex)
 	k += ft_load_img(mlx, &tex->orangeportal, "./textures/orangeportal.xpm");
 	if (k > 0)
 	{
-		ft_putstr("textures load fail");
+		ft_putstr("textures load fail\n");
 		(void)w3d;
 		exit(0);
 	}
-	ft_putstr("textures load succes");
+	ft_putstr("textures load succes\n");
 	ft_tab_xpm(tex);
 	ft_tab_texture(tex);
 }

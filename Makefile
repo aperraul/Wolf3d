@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/05/13 16:27:10 by aperraul         ###   ########.fr        #
+#    Updated: 2016/05/15 16:44:50 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = wolf3d
 
 SRC = ./sources/main.c \
 	  ./sources/ft_check_line.c \
+	  ./sources/ft_check_map.c \
 	  ./sources/get_map.c \
 	  ./sources/ft_w3d_init.c \
 	  ./sources/ft_pre_w3d.c \
@@ -32,6 +33,7 @@ SRC = ./sources/main.c \
 
 OBJS = ./main.o \
 	   ./ft_check_line.o \
+	   ./ft_check_map.o \
 	   ./get_map.o \
 	   ./ft_w3d_init.o \
 	   ./ft_pre_w3d.o \
