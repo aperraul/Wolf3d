@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 12:40:15 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/17 15:04:36 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x, int map_val)
 	if (map_val >= 1 && map_val <= 7)
 	{
 		ft_choose_color(map_val, r->side, &w3d->wall.color);
-		ft_draw_top(w3d, x);
+//		ft_draw_top(w3d, x);
 		ft_draw_line_w(w3d, x, w3d->wall.dstart, w3d->wall.dend);
-		ft_draw_bot(w3d, x);
+//		ft_draw_bot(w3d, x);
 	}
 /*	else if (map_val >= 20 && map_val <= 29)
 	{
