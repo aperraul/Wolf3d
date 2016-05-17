@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/15 16:34:31 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/17 10:54:52 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct	s_portal
 typedef struct	s_w3d
 {
 	int			nb_spawn;
-	t_pt		spawn;
+	t_ptd		spawn;
 	int			floor_case;
 	t_mlx		*mlx;
 	int			nb_lines;

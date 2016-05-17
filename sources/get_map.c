@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/15 17:27:42 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/17 11:46:06 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,33 @@ static void		ft_line_error(t_lstline *list, t_w3d *w3d)
 	return ;
 }
 
-void			ft_get_map(t_w3d *w3d, int ret)
+static void		ft_fill_lst(t_w3d *w3d, int ret, t_lstline **list)
 {
-	char		*line;
-	t_lstline	*list;
-	int			error;
+	char	*line;
 
-	line = NULL;
-	list = NULL;
 	while (get_next_line(ret, &line) > 0)
 	{
 		if (ft_check_line(line, w3d) == 0)
 		{
-			ft_line_error(list, w3d);
+			ft_line_error(*list, w3d);
 			return ;
 		}
-		list = ft_add_list(list, line);
+		*list = ft_add_list(*list, line);
 		w3d->nb_lines++;
 	}
+}
+
+void			ft_get_map(t_w3d *w3d, int ret)
+{
+	t_lstline	*list;
+	int			error;
+
+	list = NULL;
+	ft_fill_lst(w3d, ret, &list);
 	if (w3d->nb_lines < 3 || w3d->nb_spawn < 1)
 	{
 		ft_line_error(list, w3d);
-		return;
+		return ;
 	}
 	ft_fill_tab(list, w3d->nb_lines, w3d);
 	if ((error = ft_check_map(w3d)) != 0)
