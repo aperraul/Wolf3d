@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 10:41:22 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/17 12:05:17 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int		ft_release_key(int keycode, t_w3d *w3d)
 int		ft_wolf3d_loop(t_w3d *w3d)
 {
 	double	elapsedtime;
+	static double timer = 0;
+	int		fps;
 
 	gettimeofday(&w3d->delt.t1, NULL);
 	ft_wolf3d(w3d);
@@ -59,5 +61,14 @@ int		ft_wolf3d_loop(t_w3d *w3d)
 	w3d->delt.dt = elapsedtime / 1000;
 	if (w3d->delt.dt < 0)
 		w3d->delt.dt = -w3d->delt.dt;
+	fps = 1 / w3d->delt.dt;
+	timer += w3d->delt.dt;
+	if (timer >= 0.5)
+	{
+		ft_putstr("FPS = ");
+		ft_putnbr(fps);
+		ft_putchar('\n');
+		timer = 0;
+	}
 	return (0);
 }

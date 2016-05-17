@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/14 11:39:15 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/17 12:24:07 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 	return (tex_x);
 }
 
-static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
+/*static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
 {
 	int		color;
 	int		ov;
@@ -56,7 +56,7 @@ static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
 			color = c2[tex_y];
 	}
 return (color);
-}
+}*/
 
 void		ft_draw_texture(t_w3d *w3d, int tex_value, int size_y)
 {
@@ -82,9 +82,9 @@ void		ft_draw_texture(t_w3d *w3d, int tex_value, int size_y)
 	{
 		a = w->dstart * 256 - WIN_Y * 128 + w->hline * 128;
 		tex_y = ((a * size_y) / w->hline) / 256;
-		if (tex_value == 8 || tex_value == 9)
-			color = ft_draw_portal(w3d, colon, colon2, tex_y, tex_value);
-		else
+//		if (tex_value == 8 || tex_value == 9)
+//			color = ft_draw_portal(w3d, colon, colon2, tex_y, tex_value);
+//		else
 			color = colon[tex_y]; // simple texture;
 		ft_draw_pixel(w3d->mlx, color, ft_make_pt(w3d->wall.wall_x, w->dstart));
 		w->dstart++;
