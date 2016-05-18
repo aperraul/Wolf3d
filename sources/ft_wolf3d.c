@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 12:02:04 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 14:40:59 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 12:38:17 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static void		ft_calc_draw_colone(t_wall *w, t_ray *r)
 	if (w->dstart < 0)
 		w->dstart = 0;
 	w->dend = w->hline / 2 + WIN_Y / 2;
-	if (w->dstart >= WIN_Y)
-		w->dstart = WIN_Y - 1;
+	if (w->dend >= WIN_Y)
+		w->dend = WIN_Y - 1;
 }
 
 void			ft_wolf3d(t_w3d *w3d)

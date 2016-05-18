@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 12:24:07 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:04:54 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 	return (tex_x);
 }
 
-/*static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
+static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
 {
 	int		color;
 	int		ov;
@@ -41,7 +41,7 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 		if (c[tex_y] == -16777216)
 		{
 			if (c2 == NULL)
-				color = ft_choose_color(ov, w3d->ray.side);
+				color = ft_choose_color(ov, w3d->ray.side, 0);
 			else
 				color = c2[tex_y];
 		}
@@ -51,15 +51,16 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 	else
 	{
 		if (c2 == NULL)
-			color = ft_choose_color(ov, w3d->ray.side);
+			color = ft_choose_color(ov, w3d->ray.side, 0);
 		else
 			color = c2[tex_y];
 	}
 return (color);
-}*/
+}
 
-void		ft_draw_texture(t_w3d *w3d, int tex_value, int size_y)
+void		ft_draw_texture(t_w3d *w3d, int v, int size_y, int ds, int de)
 {
+	t_mlx		*mlx;
 	int			*colon;
 	int			*colon2;
 	int			tex_y;
@@ -67,50 +68,79 @@ void		ft_draw_texture(t_w3d *w3d, int tex_value, int size_y)
 	int			val;
 	int			color;
 	long int	a;
+	void		*data;
+	long int	position;
 
+	mlx = w3d->mlx;
 	w = &w3d->wall;
 	colon2 = NULL;
-	size_y = w3d->texture.tab_xpm[tex_value]->size.y;
-	if (tex_value == 8 || tex_value == 9)
+	data = w3d->mlx->mlx_img->data;
+	size_y = w3d->texture.tab_xpm[v]->size.y;
+	if (v == 8 || v == 9)
 	{
-		val = tex_value == 8 ? w3d->portal.ovb - 20 : w3d->portal.ovo - 20;
+		val = v == 8 ? w3d->portal.ovb - 20 : w3d->portal.ovo - 20;
 		if (val >= 0 && val <= 7)
-			colon2 = w3d->texture.tab_textures[val][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[tex_value]->size.x)];
+			colon2 = w3d->texture.tab_textures[val][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
 	}
-	colon = w3d->texture.tab_textures[tex_value][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[tex_value]->size.x)];
-	while (w->dstart < w->dend)
+	colon = w3d->texture.tab_textures[v][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
+	while (ds < de)
 	{
-		a = w->dstart * 256 - WIN_Y * 128 + w->hline * 128;
+		a = ds * 256 - WIN_Y * 128 + w->hline * 128;
 		tex_y = ((a * size_y) / w->hline) / 256;
-//		if (tex_value == 8 || tex_value == 9)
-//			color = ft_draw_portal(w3d, colon, colon2, tex_y, tex_value);
-//		else
+		if (v == 8 || v == 9)
+			color = ft_draw_portal(w3d, colon, colon2, tex_y, v);
+		else
 			color = colon[tex_y]; // simple texture;
-		ft_draw_pixel(w3d->mlx, color, ft_make_pt(w3d->wall.wall_x, w->dstart));
-		w->dstart++;
+		position = (ds * mlx->mlx_img->width) + (w->wall_x * mlx->mlx_img->octet);
+		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
+		ds++;
 	}
 }
 
-void		ft_draw_top(t_w3d *w3d, int x)
+void		ft_draw_top(t_mlx *mlx, int x, int color, int ds)
 {
-	int		i;
-	int		color;
+	t_pt		pt;
+	int			i;
+	void		*data;
+	long int	position;
 
-	color = 0x3399FF;
+	data = mlx->mlx_img->data;
 	i = -1;
-	while (++i < w3d->wall.dstart)
-		ft_draw_pixel(w3d->mlx, color, ft_make_pt(x, i));
+	pt.x = x;
+	int max = mlx->mlx_img->width;
+	while (++i < ds)
+	{
+		pt.y = i;
+		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
+		if (position < 0 || position >= max * mlx->y)
+		{
+			ft_putstr("YOLO");
+			return ;
+		}
+		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
+	}
 }
 
-void	ft_draw_bot(t_w3d *w3d, int x)
+void	ft_draw_bot(t_mlx *mlx, int x, int color, int de)
 {
-	int		color;
-	int		i;
-	int		s;
+	void		*data;
+	long int	position;
+	t_pt		pt;
 
-	s = w3d->wall.dend - 1;
-	color = 0x009900;
-	i = WIN_Y;
-	while (++s < i)
-		ft_draw_pixel(w3d->mlx, color, ft_make_pt(x, s));
+	data = mlx->mlx_img->data;
+	pt.x = x;
+	int max = mlx->mlx_img->width;
+	while (de < WIN_Y)
+	{
+		pt.y = de;
+		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
+		if (position < 0 || position >= max * mlx->y)
+		{
+			ft_putstr("YOLO");
+			return ;
+		}
+		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
+		de++;
+	}
+
 }

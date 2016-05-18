@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 12:19:13 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 14:39:38 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,11 @@ void			ft_wolf3d(t_w3d *w3d);
 void			ft_draw_wolf3d(t_w3d *w3d, t_ray *r, int x, int map_val);
 int				ft_wolf_move(int keycode, t_w3d *w3d);
 int				ft_release_key(int keycode, t_w3d *w3d);
-void			ft_choose_color(int val, int side, int *c);
+int				ft_choose_color(int val, int side, int c);
 int				ft_wolf3d_loop(t_w3d *w3d);
 int				ft_wall_side(t_w3d *w3d);
-void			ft_draw_top(t_w3d *w3d, int x);
-void			ft_draw_bot(t_w3d *w3di,int x);
+void			ft_draw_top(t_mlx *mlx, int x, int color, int ds);
+void			ft_draw_bot(t_mlx *mlx, int x, int color, int de);
 void			ft_wolf_events(t_w3d *w3d);
 void			ft_rotate(int i, t_ptd *cdir, t_ptd *cplan, double r);
 void			ft_wolf_portal(t_w3d *w3d);
@@ -141,6 +141,6 @@ void			ft_move_backward(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void			ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void			ft_move_right(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex);
-void			ft_draw_texture(t_w3d *w3d, int tex_value, int size_y);
+void			ft_draw_texture(t_w3d *w3d, int v, int size_y, int ds, int de);
 
 #endif
