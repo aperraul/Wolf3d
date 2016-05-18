@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 11:10:44 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/18 15:05:08 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:05:40 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@ static void		ft_draw_line_w(t_mlx *mlx, int x, int ds, int de, int color)
 	long int	position;
 	pt.x = x;
 	data = mlx->mlx_img->data;
-	int max = mlx->mlx_img->width;
 	while (ds < de)
 	{
 		pt.y = ds;
 		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
-		if (position < 0 || position >= max * mlx->y)
-		{
-			ft_putstr("YOLO");
-			return ;
-		}
 		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
 		ds++;
 	}

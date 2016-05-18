@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/18 15:04:54 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:05:33 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,10 @@ void		ft_draw_top(t_mlx *mlx, int x, int color, int ds)
 	data = mlx->mlx_img->data;
 	i = -1;
 	pt.x = x;
-	int max = mlx->mlx_img->width;
 	while (++i < ds)
 	{
 		pt.y = i;
 		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
-		if (position < 0 || position >= max * mlx->y)
-		{
-			ft_putstr("YOLO");
-			return ;
-		}
 		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
 	}
 }
@@ -129,16 +123,10 @@ void	ft_draw_bot(t_mlx *mlx, int x, int color, int de)
 
 	data = mlx->mlx_img->data;
 	pt.x = x;
-	int max = mlx->mlx_img->width;
 	while (de < WIN_Y)
 	{
 		pt.y = de;
 		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
-		if (position < 0 || position >= max * mlx->y)
-		{
-			ft_putstr("YOLO");
-			return ;
-		}
 		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
 		de++;
 	}
