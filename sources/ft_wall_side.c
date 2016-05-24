@@ -6,28 +6,36 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 10:53:24 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 10:39:48 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/18 15:30:33 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/header.h"
 
-int		ft_wall_side(t_w3d *w3d)
+int		ft_wall_side(t_pt map, t_ptd pos, int side)
 {
 	int		wall_side;
+	int		posx;
+	int		posy;
+	int		mapx;
+	int		mapy;
 
-	if (w3d->ray.side == 0)
+	posx = pos.x;
+	posy = pos.y;
+	mapx = map.x;
+	mapy = map.y;
+	if (side == 0)
 	{
-		if (w3d->cam.pos.x > w3d->ray.map.x)
+		if (posx > mapx)
 			return (wall_side = 1);
-		else if (w3d->cam.pos.x < w3d->ray.map.x)
+		else if (posx < mapx)
 			return (wall_side = 3);
 	}
-	else if (w3d->ray.side == 1)
+	else if (side == 1)
 	{
-		if (w3d->cam.pos.y > w3d->ray.map.y)
+		if (posy > mapy)
 			return (wall_side = 2);
-		else if (w3d->cam.pos.y < w3d->ray.map.y)
+		else if (posy < mapy)
 			return (wall_side = 4);
 	}
 	return (0);

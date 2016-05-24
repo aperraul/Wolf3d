@@ -6,13 +6,13 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 17:44:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/18 15:05:33 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/24 15:44:38 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/header.h"
 
-static int	ft_tex_x(t_ray *r, double pwd, int size_x)
+static int		ft_tex_x(t_ray *r, double pwd, int size_x)
 {
 	double	wallx;
 	int		tex_x;
@@ -30,105 +30,78 @@ static int	ft_tex_x(t_ray *r, double pwd, int size_x)
 	return (tex_x);
 }
 
-static int	ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y, int v)
+static int		ft_draw_portal(t_w3d *w3d, int *c, int *c2, int tex_y)
 {
-	int		color;
 	int		ov;
+	int		p_side;
 
-	ov = (v == 8 ? w3d->portal.ovb : w3d->portal.ovo);
-	if ((v == 8 && ft_wall_side(w3d) == w3d->portal.orib) || (v == 9 && ft_wall_side(w3d) == w3d->portal.orio))
+	ov = (w3d->v == 8 ? w3d->portal.ovb : w3d->portal.ovo);
+	p_side = ft_wall_side(w3d->ray.map, w3d->cam.pos, w3d->ray.side);
+	if ((w3d->v == 8 && p_side == w3d->portal.orib) ||
+			(w3d->v == 9 && p_side == w3d->portal.orio))
 	{
 		if (c[tex_y] == -16777216)
 		{
 			if (c2 == NULL)
-				color = ft_choose_color(ov, w3d->ray.side, 0);
+				return (ft_choose_color(ov, w3d->ray.side, 0));
 			else
-				color = c2[tex_y];
+				return (c2[tex_y]);
 		}
 		else
-		color = c[tex_y];
+			return (c[tex_y]);
 	}
 	else
 	{
 		if (c2 == NULL)
-			color = ft_choose_color(ov, w3d->ray.side, 0);
+			return (ft_choose_color(ov, w3d->ray.side, 0));
 		else
-			color = c2[tex_y];
+			return (c2[tex_y]);
 	}
-return (color);
 }
 
-void		ft_draw_texture(t_w3d *w3d, int v, int size_y, int ds, int de)
+static void		ft_draw_tex_loop(t_w3d *w3d, t_pt d, int *c, int *c2)
 {
-	t_mlx		*mlx;
-	int			*colon;
-	int			*colon2;
-	int			tex_y;
-	t_wall		*w;
-	int			val;
-	int			color;
 	long int	a;
-	void		*data;
-	long int	position;
+	long int	pos;
+	t_pt		t_c;
+	t_wall		*w;
+	t_mlx		*mlx;
 
-	mlx = w3d->mlx;
 	w = &w3d->wall;
-	colon2 = NULL;
-	data = w3d->mlx->mlx_img->data;
+	mlx = w3d->mlx;
+	while (d.x < d.y)
+	{
+		a = d.x * 256 - WIN_Y * 128 + w->hline * 128;
+		t_c.x = ((a * w3d->size_y) / w->hline) / 256;
+		if (w3d->v == 8 || w3d->v == 9)
+			t_c.y = ft_draw_portal(w3d, c, c2, t_c.x);
+		else
+			t_c.y = c[t_c.x];
+		pos = (d.x * mlx->mlx_img->width) + (w->wall_x * mlx->mlx_img->octet);
+		ft_memcpy(w3d->data + pos, &t_c.y, (unsigned)w3d->mlx->mlx_img->octet);
+		d.x++;
+	}
+}
+
+void			ft_draw_texture(t_w3d *w3d, int v, int size_y, t_pt pt_draw)
+{
+	int			*c;
+	int			*c2;
+	int			val;
+
+	c2 = NULL;
+	w3d->data = w3d->mlx->mlx_img->data;
 	size_y = w3d->texture.tab_xpm[v]->size.y;
 	if (v == 8 || v == 9)
 	{
-		val = v == 8 ? w3d->portal.ovb - 20 : w3d->portal.ovo - 20;
+		val = (v == 8 ? w3d->portal.ovb - 20 : w3d->portal.ovo - 20);
 		if (val >= 0 && val <= 7)
-			colon2 = w3d->texture.tab_textures[val][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
+			c2 = w3d->texture.tab_textures[val][ft_tex_x(&w3d->ray
+					, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
 	}
-	colon = w3d->texture.tab_textures[v][ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
-	while (ds < de)
-	{
-		a = ds * 256 - WIN_Y * 128 + w->hline * 128;
-		tex_y = ((a * size_y) / w->hline) / 256;
-		if (v == 8 || v == 9)
-			color = ft_draw_portal(w3d, colon, colon2, tex_y, v);
-		else
-			color = colon[tex_y]; // simple texture;
-		position = (ds * mlx->mlx_img->width) + (w->wall_x * mlx->mlx_img->octet);
-		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
-		ds++;
-	}
-}
-
-void		ft_draw_top(t_mlx *mlx, int x, int color, int ds)
-{
-	t_pt		pt;
-	int			i;
-	void		*data;
-	long int	position;
-
-	data = mlx->mlx_img->data;
-	i = -1;
-	pt.x = x;
-	while (++i < ds)
-	{
-		pt.y = i;
-		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
-		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
-	}
-}
-
-void	ft_draw_bot(t_mlx *mlx, int x, int color, int de)
-{
-	void		*data;
-	long int	position;
-	t_pt		pt;
-
-	data = mlx->mlx_img->data;
-	pt.x = x;
-	while (de < WIN_Y)
-	{
-		pt.y = de;
-		position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
-		ft_memcpy(data + position, &color, (unsigned)mlx->mlx_img->octet);
-		de++;
-	}
-
+	c = w3d->texture.tab_textures[v]
+		[ft_tex_x(&w3d->ray, w3d->wall.pwd, w3d->texture.tab_xpm[v]->size.x)];
+	w3d->v = v;
+	w3d->size_y = size_y;
+	ft_draw_tex_loop(w3d, pt_draw, c, c2);
 }

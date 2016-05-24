@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/03 16:23:40 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/15 17:37:51 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/24 14:04:19 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex)
 	if (k > 0)
 	{
 		ft_putstr("textures load fail\n");
-		(void)w3d;
+		ft_clear_w3d(w3d);
 		exit(0);
 	}
 	ft_putstr("textures load succes\n");

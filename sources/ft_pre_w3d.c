@@ -6,13 +6,13 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 11:56:48 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 11:02:47 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/23 10:59:28 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/header.h"
 
-void	ft_pre_w3d(t_w3d *w3d)
+void			ft_pre_w3d(t_w3d *w3d)
 {
 	w3d->mlx = ft_mlx_init(w3d->mlx, WIN_X, WIN_Y, "wolf3d");
 	ft_load_w3d_textures(w3d, w3d->mlx, &w3d->texture);

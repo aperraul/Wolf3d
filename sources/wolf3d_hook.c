@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 12:05:17 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/24 14:05:58 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int		ft_wolf_move(int keycode, t_w3d *w3d)
 {
 	if (keycode == 53)
+	{
+		ft_clear_w3d(w3d);
 		exit(0);
+	}
 	if (keycode == 13)
 		w3d->cam.keym = 1;
 	if (keycode == 1)
@@ -48,9 +51,9 @@ int		ft_release_key(int keycode, t_w3d *w3d)
 
 int		ft_wolf3d_loop(t_w3d *w3d)
 {
-	double	elapsedtime;
-	static double timer = 0;
-	int		fps;
+	double			elapsedtime;
+	static double	timer = 0;
+	int				fps;
 
 	gettimeofday(&w3d->delt.t1, NULL);
 	ft_wolf3d(w3d);

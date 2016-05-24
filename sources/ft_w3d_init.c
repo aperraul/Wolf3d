@@ -6,13 +6,79 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 12:11:37 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/05/24 14:03:03 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Header/header.h"
 
-t_w3d	*ft_w3d_init(void)
+static void		ft_del_tab_textures(t_texture *t)
+{
+	int		x;
+	int		y;
+
+	if (t->tab_textures)
+	{
+		x = -1;
+		while (++x <= 9)
+		{
+			y = t->tab_xpm[x]->size.y;
+			while (y--)
+				ft_memdel((void **)&t->tab_textures[x][y]);
+			ft_memdel((void **)t->tab_textures[x]);
+		}
+		free(t->tab_textures);
+	}
+	if (t->tab_xpm)
+		ft_memdel((void **)&t->tab_xpm);
+}
+
+static void		ft_del_tab_xpm(t_mlx *mlx, t_texture t)
+{
+	if (t.bluestone.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.bluestone.p_img);
+	if (t.colorstone.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.colorstone.p_img);
+	if (t.eagle.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.eagle.p_img);
+	if (t.greystone.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.greystone.p_img);
+	if (t.mossy.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.mossy.p_img);
+	if (t.purplestone.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.purplestone.p_img);
+	if (t.redbrick.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.redbrick.p_img);
+	if (t.wood.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.wood.p_img);
+	if (t.blueportal.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.blueportal.p_img);
+	if (t.orangeportal.loaded == 1)
+		mlx_destroy_image(mlx->p_mlx, t.orangeportal.p_img);
+}
+
+void			ft_clear_w3d(t_w3d *w3d)
+{
+	int		y;
+
+	ft_del_tab_xpm(w3d->mlx, w3d->texture);
+	if (w3d->texture.tab_textures)
+		ft_del_tab_textures(&w3d->texture);
+	if (w3d->map)
+	{
+		y = -1;
+		while (w3d->map[++y])
+			ft_memdel((void **)&w3d->map[y]);
+		ft_memdel((void **)&w3d->map);
+	}
+	if (w3d->nb_x_line)
+		ft_memdel((void **)&w3d->nb_x_line);
+	if (w3d->mlx)
+		ft_clear_mlx(w3d->mlx);
+	ft_memdel((void **)&w3d);
+}
+
+t_w3d			*ft_w3d_init(void)
 {
 	t_w3d	*w3d;
 
@@ -20,9 +86,10 @@ t_w3d	*ft_w3d_init(void)
 	w3d->nb_x_line = NULL;
 	w3d->map = NULL;
 	w3d->mlx = NULL;
+	w3d->texture.tab_xpm = NULL;
+	w3d->texture.tab_textures = NULL;
 	w3d->nb_lines = 0;
 	w3d->nb_spawn = 0;
-	w3d->wall.color = 0;
 	w3d->cam.pos.x = 5;
 	w3d->cam.pos.y = 5;
 	w3d->cam.dir.x = -1;
