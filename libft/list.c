@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:11:03 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/13 10:37:32 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/02 14:34:49 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void		ft_lstline_del(t_lstline *alst)
 		while (temp1->next)
 		{
 			temp2 = temp1->next;
+			ft_memdel((void **)&temp1->line);
 			ft_memdel((void **)&temp1);
 			temp1 = temp2;
 		}
+		ft_memdel((void **)&temp1->line);
 		ft_memdel((void **)&temp1);
 		alst = NULL;
 	}

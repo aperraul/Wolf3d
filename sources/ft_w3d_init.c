@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/24 14:03:03 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/02 15:17:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ static void		ft_del_tab_textures(t_texture *t)
 			y = t->tab_xpm[x]->size.y;
 			while (y--)
 				ft_memdel((void **)&t->tab_textures[x][y]);
-			ft_memdel((void **)t->tab_textures[x]);
+			if (t->tab_textures[x])
+				free(t->tab_textures[x]);
 		}
 		free(t->tab_textures);
 	}
 	if (t->tab_xpm)
-		ft_memdel((void **)&t->tab_xpm);
+		free(t->tab_xpm);
 }
 
 static void		ft_del_tab_xpm(t_mlx *mlx, t_texture t)
@@ -69,13 +70,13 @@ void			ft_clear_w3d(t_w3d *w3d)
 		y = -1;
 		while (w3d->map[++y])
 			ft_memdel((void **)&w3d->map[y]);
-		ft_memdel((void **)&w3d->map);
+		free(w3d->map);
 	}
 	if (w3d->nb_x_line)
-		ft_memdel((void **)&w3d->nb_x_line);
+		free(w3d->nb_x_line);
 	if (w3d->mlx)
 		ft_clear_mlx(w3d->mlx);
-	ft_memdel((void **)&w3d);
+	free(w3d);
 }
 
 t_w3d			*ft_w3d_init(void)

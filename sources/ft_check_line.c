@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 17:18:01 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/17 11:04:43 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/02 15:30:06 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		ft_check_spawn(char *line, t_w3d *w3d, int i, int *f)
 	}
 	if (line[i + 1] != ' ')
 		return (0);
-	w3d->spawn.y = w3d->nb_lines;
+	w3d->spawn.y = w3d->nb_lines + 1;
 	w3d->spawn.x = (*f - 1);
 	ft_putnbr(w3d->spawn.x);
 	ft_putchar(' ');
@@ -35,6 +35,7 @@ static int		ft_check_character(t_w3d *w3d, char *line, int i, int *f)
 {
 	static int	tmp = 0;
 
+	w3d->nb_spawn = 1;
 	if (line[i] == 's')
 	{
 		if (!ft_check_spawn(line, w3d, i, f))
