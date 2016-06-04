@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/02 15:17:43 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/03 11:30:35 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ t_w3d			*ft_w3d_init(void)
 	w3d->texture.tab_textures = NULL;
 	w3d->nb_lines = 0;
 	w3d->nb_spawn = 0;
-	w3d->cam.pos.x = 5;
-	w3d->cam.pos.y = 5;
+//	w3d->cam.pos.x = 5;
+//	w3d->cam.pos.y = 5;
 	w3d->cam.dir.x = -1;
 	w3d->cam.dir.y = 0;
 	w3d->cam.plan.x = 0;
