@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:42:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/04 11:47:29 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/04 12:34:42 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,20 @@ static void	ft_check_inter_lines(t_w3d *w3d, int y, int *error)
 int			ft_check_map(t_w3d *w3d)
 {
 	int		i;
-	int		error;;
+	int		error;
 	int		end;
+	int		nb;
 
 	error = 0;
 	w3d->floor_case = 0;
-	i = -1;
+	nb = w3d->nb_lines;
 	end = w3d->nb_lines - 1;
+	while (--nb > 0)
+	{
+		if (w3d->nb_x_line[0] != w3d->nb_x_line[nb])
+			error += 1;
+	}
+	i = -1;
 	while (++i < w3d->nb_lines)
 	{
 		if (i == 0 || i == end)
