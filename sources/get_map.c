@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/04 12:39:03 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/06 14:42:43 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,38 @@ static void		ft_fill_tab(t_lstline *list, int x, t_w3d *w3d)
 	}
 }
 
-static void		ft_line_error(t_lstline *list, t_w3d *w3d)
+static void		ft_line_error(t_lstline *list, t_w3d *w3d, int mode)
 {
 	if (list != NULL)
 		ft_lstline_del(list);
-	if (w3d->nb_spawn < 1)
-		ft_putstr("error: no spawn set\n");
-	ft_putstr("error: invalid map\n");
+	if (mode == 1)
+		ft_putstr("error: invalid line\n");
+	if (mode == 2)
+	{
+		if (w3d->nb_lines < 3)
+			ft_putstr("error: less than 3 lines\n");
+		if (w3d->nb_spawn < 1)
+			ft_putstr("error: no spawn 's' set\n");
+	}
+	if (mode > 2)
+	{
+		ft_putstr("error: ");
+		ft_putnbr(mode - 2);
+		ft_putstr(" error on the map\n");
+	}
 	w3d->map = NULL;
-	return ;
+	exit(0);
 }
 
 static void		ft_fill_lst(t_w3d *w3d, int ret, t_lstline **list)
 {
 	char	*line;
 
+	line = NULL;
 	while (get_next_line(ret, &line) > 0)
 	{
 		if (ft_check_line(line, w3d) == 0)
-		{
-			ft_line_error(*list, w3d);
-			return ;
-		}
+			ft_line_error(*list, w3d, 1);
 		*list = ft_add_list(*list, line);
 		w3d->nb_lines++;
 	}
@@ -74,18 +84,9 @@ void			ft_get_map(t_w3d *w3d, int ret)
 	list = NULL;
 	ft_fill_lst(w3d, ret, &list);
 	if (w3d->nb_lines < 3 || w3d->nb_spawn < 1)
-	{
-		ft_line_error(list, w3d);
-		return ;
-	}
+		ft_line_error(list, w3d, 2);
 	ft_fill_tab(list, w3d->nb_lines, w3d);
 	if ((error = ft_check_map(w3d)) != 0)
-	{
-		ft_line_error(list, w3d);
-		ft_putstr("error: ");
-		ft_putnbr(error);
-		ft_putstr(" error on the map\n");
-		return ;
-	}
+		ft_line_error(list, w3d, (error + 2));
 	ft_lstline_del(list);
 }

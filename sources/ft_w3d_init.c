@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/03 11:30:35 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/06 11:44:29 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			ft_clear_w3d(t_w3d *w3d)
 {
 	int		y;
 
-	ft_del_tab_xpm(w3d->mlx, w3d->texture);
+	if (w3d->texture.tab_xpm)
+		ft_del_tab_xpm(w3d->mlx, w3d->texture);
 	if (w3d->texture.tab_textures)
 		ft_del_tab_textures(&w3d->texture);
 	if (w3d->map)
@@ -91,8 +92,6 @@ t_w3d			*ft_w3d_init(void)
 	w3d->texture.tab_textures = NULL;
 	w3d->nb_lines = 0;
 	w3d->nb_spawn = 0;
-//	w3d->cam.pos.x = 5;
-//	w3d->cam.pos.y = 5;
 	w3d->cam.dir.x = -1;
 	w3d->cam.dir.y = 0;
 	w3d->cam.plan.x = 0;

@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:42:55 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/04 12:34:42 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/06 14:46:42 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	ft_check_inter_lines(t_w3d *w3d, int y, int *error)
 	{
 		val = w3d->map[y][x];
 		if (x == 0 || x == end - 1)
-			{
-				if (!((val >= 1 && val <= 7) || (val >= 20 && val <= 27)))
-					*error += 1;
-			}
+		{
+			if (!((val >= 1 && val <= 7) || (val >= 20 && val <= 27)))
+				*error += 1;
+		}
 		else if (x > 0 && x < end - 1)
 		{
 			if (!((val >= 0 && val <= 7) || (val >= 20 && val <= 27)))
@@ -60,13 +60,15 @@ int			ft_check_map(t_w3d *w3d)
 	int		nb;
 
 	error = 0;
-	w3d->floor_case = 0;
 	nb = w3d->nb_lines;
 	end = w3d->nb_lines - 1;
 	while (--nb > 0)
 	{
 		if (w3d->nb_x_line[0] != w3d->nb_x_line[nb])
+		{
+			ft_putstr("error: lines size !=\n");
 			error += 1;
+		}
 	}
 	i = -1;
 	while (++i < w3d->nb_lines)
