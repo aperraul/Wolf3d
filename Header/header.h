@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:00:45 by aperraul          #+#    #+#             */
-/*   Updated: 2016/05/24 15:34:23 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:12:02 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct	s_w3d
 	t_portal	portal;
 	t_texture	texture;
 	int			port;
+	double		sprint;
 	void		*data;
 }				t_w3d;
 
@@ -144,6 +145,7 @@ void			ft_move_left(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void			ft_move_right(t_w3d *w3d, t_ptd *cpos, t_ptd *cdir);
 void			ft_load_w3d_textures(t_w3d *w3d, t_mlx *mlx, t_texture *tex);
 void			ft_draw_texture(t_w3d *w3d, int v, int size_y, t_pt pt_draw);
+int				red_x(int key, t_w3d *w3d);
 void			ft_clear_w3d(t_w3d *w3d);
 
 #endif

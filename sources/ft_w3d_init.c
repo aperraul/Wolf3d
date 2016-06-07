@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/06 11:44:29 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:10:47 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static void		ft_del_tab_textures(t_texture *t)
 		{
 			y = t->tab_xpm[x]->size.y;
 			while (y--)
-				ft_memdel((void **)&t->tab_textures[x][y]);
+			{
+				if (t->tab_textures[x][y])
+					ft_memdel((void **)&t->tab_textures[x][y]);
+			}
 			if (t->tab_textures[x])
 				free(t->tab_textures[x]);
 		}
@@ -62,10 +65,10 @@ void			ft_clear_w3d(t_w3d *w3d)
 {
 	int		y;
 
-	if (w3d->texture.tab_xpm)
-		ft_del_tab_xpm(w3d->mlx, w3d->texture);
 	if (w3d->texture.tab_textures)
 		ft_del_tab_textures(&w3d->texture);
+	if (w3d->texture.tab_xpm)
+		ft_del_tab_xpm(w3d->mlx, w3d->texture);
 	if (w3d->map)
 	{
 		y = -1;
@@ -100,6 +103,7 @@ t_w3d			*ft_w3d_init(void)
 	w3d->cam.keym = 0;
 	w3d->cam.keyr = 0;
 	w3d->port = 0;
+	w3d->sprint = 0;
 	w3d->portal.nbb = 0;
 	w3d->portal.nbo = 0;
 	w3d->portal.posb = ft_make_pt(-1, -1);

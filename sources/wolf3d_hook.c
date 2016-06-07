@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:39:59 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/02 15:19:24 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:12:21 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int		ft_wolf_move(int keycode, t_w3d *w3d)
 		w3d->port = 1;
 	if (keycode == 14)
 		w3d->port = -1;
+	if (keycode == 257)
+		w3d->sprint = 0.2;
 	return (0);
 }
 
@@ -46,7 +48,16 @@ int		ft_release_key(int keycode, t_w3d *w3d)
 		w3d->cam.keyr = 0;
 	if (keycode == 12 || keycode == 14)
 		w3d->port = 0;
+	if (keycode == 257)
+		w3d->sprint = 0;
 	return (0);
+}
+
+int		red_x(int key, t_w3d *w3d)
+{
+	(void)key;
+	(void)w3d;
+	exit(0);
 }
 
 int		ft_wolf3d_loop(t_w3d *w3d)
@@ -67,11 +78,6 @@ int		ft_wolf3d_loop(t_w3d *w3d)
 	fps = 1 / w3d->delt.dt;
 	timer += w3d->delt.dt;
 	if (timer >= 0.5)
-	{
-		ft_putstr("FPS = ");
-		ft_putnbr(fps);
-		ft_putchar('\n');
 		timer = 0;
-	}
 	return (0);
 }

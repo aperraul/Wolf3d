@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 11:56:48 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/04 11:21:14 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/07 14:12:04 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void			ft_pre_w3d(t_w3d *w3d)
 	ft_wolf3d(w3d);
 	mlx_hook(w3d->mlx->p_win, KeyPress, KeyPressMask, ft_wolf_move, w3d);
 	mlx_hook(w3d->mlx->p_win, KeyRelease, KeyPressMask, ft_release_key, w3d);
+	mlx_hook(w3d->mlx->p_win, DestroyNotify, StructureNotifyMask, &red_x, w3d);
 	mlx_loop_hook(w3d->mlx->p_mlx, ft_wolf3d_loop, w3d);
 	mlx_loop(w3d->mlx->p_mlx);
 }
