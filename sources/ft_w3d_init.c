@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/08 12:15:17 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/08 15:38:02 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ void			ft_clear_w3d(t_w3d *w3d)
 {
 	if (w3d->texture.tab_textures)
 		ft_del_tab_textures(&w3d->texture);
-	if (w3d->texture.tab_xpm)
-		ft_del_tab_xpm(w3d->mlx, w3d->texture);
+	ft_del_tab_xpm(w3d->mlx, w3d->texture);
 	ft_del_map(w3d);
 	if (w3d->nb_x_line)
 		free(w3d->nb_x_line);
