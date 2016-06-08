@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 16:07:08 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/06 14:42:43 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/08 12:17:13 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void		ft_line_error(t_lstline *list, t_w3d *w3d, int mode)
 		ft_putstr("error: ");
 		ft_putnbr(mode - 2);
 		ft_putstr(" error on the map\n");
+		ft_del_map(w3d);
 	}
 	w3d->map = NULL;
 	exit(0);

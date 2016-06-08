@@ -6,7 +6,7 @@
 /*   By: aperraul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 11:12:05 by aperraul          #+#    #+#             */
-/*   Updated: 2016/06/07 14:10:47 by aperraul         ###   ########.fr       */
+/*   Updated: 2016/06/08 12:15:17 by aperraul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,10 @@ static void		ft_del_tab_xpm(t_mlx *mlx, t_texture t)
 		mlx_destroy_image(mlx->p_mlx, t.orangeportal.p_img);
 }
 
-void			ft_clear_w3d(t_w3d *w3d)
+void			ft_del_map(t_w3d *w3d)
 {
 	int		y;
 
-	if (w3d->texture.tab_textures)
-		ft_del_tab_textures(&w3d->texture);
-	if (w3d->texture.tab_xpm)
-		ft_del_tab_xpm(w3d->mlx, w3d->texture);
 	if (w3d->map)
 	{
 		y = -1;
@@ -76,6 +72,15 @@ void			ft_clear_w3d(t_w3d *w3d)
 			ft_memdel((void **)&w3d->map[y]);
 		free(w3d->map);
 	}
+}
+
+void			ft_clear_w3d(t_w3d *w3d)
+{
+	if (w3d->texture.tab_textures)
+		ft_del_tab_textures(&w3d->texture);
+	if (w3d->texture.tab_xpm)
+		ft_del_tab_xpm(w3d->mlx, w3d->texture);
+	ft_del_map(w3d);
 	if (w3d->nb_x_line)
 		free(w3d->nb_x_line);
 	if (w3d->mlx)

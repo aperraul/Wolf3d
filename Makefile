@@ -6,7 +6,7 @@
 #    By: aperraul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/08 16:10:30 by aperraul          #+#    #+#              #
-#    Updated: 2016/06/07 13:40:32 by aperraul         ###   ########.fr        #
+#    Updated: 2016/06/08 12:24:13 by aperraul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ LMLX = -lmlx
 
 FRAMEWORK = $(LMLX) -framework OpenGL -framework AppKit
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
